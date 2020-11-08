@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0%;
+}
+
+.Toolbar {
+  background: #b3dfe5;
+  width: 100%;
+  padding: 20px 10px;
+}
+
+.Name {
+  display: inline-block;
+}
+.brand-name {
+  margin: 0;
+  display: inline-block;
+  color: #303c6c;
+  font-weight: bold;
+  font-size: 30px;
+  vertical-align: middle;
+  
+
+}
+.Login {
+  display: inline-block;
+  width: calc(100% - 165.55px);
+  text-align: right;
+
+}
+.Login a {
+  text-decoration: none;
+  color: #303c6c;
+  font-size: 25px;
+  vertical-align: middle;
+  background: #f4976c;
+  border-radius: 6px;
+  padding: 5px 2.5px;
+
+}
+
+.Login a:hover,
+.Login a:active {
+  color: #d2fdff;
+  border: 2px solid  #303c6c;
+}
+
