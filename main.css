@@ -1,10 +1,14 @@
 * {
   box-sizing: border-box;
 }
-
+html {
+  height: 100%;
+}
 body {
   margin: 0%;
+  height: 100%;
 }
+
 
 .Toolbar {
   background: #b3dfe5;
@@ -47,4 +51,21 @@ body {
   color: #d2fdff;
   border: 2px solid  #303c6c;
 }
+
+.main-game {
+  margin-top: 1rem;
+  height: calc(100% - 2rem - 74px);
+
+}
+
+.main-game-piece {
+  width: calc((100% / 2) - 2px);
+  background: #fbe8a6;
+  display: inline-block;
+  text-align: center;
+  height: 100%;
+  
+}
+
+
 
