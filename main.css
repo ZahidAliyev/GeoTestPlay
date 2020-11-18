@@ -9,7 +9,6 @@ body {
   height: 100vh;
 }
 
-
 .Toolbar {
   background: #b3dfe5;
   width: 100vw;
@@ -31,7 +30,6 @@ body {
   display: inline-block;
   width: calc(100% - 10.3rem);
   text-align: right;
-
 }
 .Login a {
   text-decoration: none;
@@ -41,37 +39,116 @@ body {
   background: #f4976c;
   border-radius: 6px;
   padding: 0.325rem 0.165rem;
-
 }
 
 .Login a:hover,
 .Login a:active {
   color: #d2fdff;
-  border: 2px solid  #303c6c;
+  border: 2px solid #303c6c;
 }
 
 .Game {
   margin-top: 1rem;
   height: calc(100% - 2rem - 4.625rem);
-  width: 100vw;
+  width: 100%;
 }
 
 .main-game-piece {
-  width: calc(96%/2 - 2px);
+  width: calc(96% / 2 - 2px);
   background: #fbe8a6;
   display: inline-block;
   text-align: center;
   height: 100%;
-  
 }
 
 .Quiz {
   margin-right: 2%;
+  vertical-align: middle;
+}
+.Quiz-container {
+  background-color: darkolivegreen;
+  height: 100%;
+
+}
+.Quiz-title {
+  margin-bottom: 1rem;
+  height: 12%;
+}
+.Quiz-title_header {
+  display: inline-block;
+  margin: 0;
+  padding: 1rem;
+  color: antiquewhite;
+  border-bottom: antiquewhite solid 2px;
+  
+}
+.Quiz-tests {
+  height: calc(100% - 12% - 1rem - 10%);
+  overflow: scroll;
+  color: antiquewhite;
+}
+.Quiz-tests_test {
+  border-bottom: antiquewhite solid 1px;
+}
+.Quiz-tests_test-question {
+  text-align: left;
+  padding-left: 0.5rem ;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 80%;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+.Quiz-tests_test-question-text {
+  padding: 0.5rem;
 }
 
+.Quiz-tests_test-question-text h3 {
+margin: 0;
+}
+.Quiz-tests_test-answer {
+  padding: 0.2rem;
+}
+.Quiz-tests_test-mark {
+  display: inline-block;
+  width: calc(100% - 81%);
+  vertical-align: middle;
+
+}
+.Quiz-tests_test-mark p {
+  
+}
+.Quiz-control {
+  background-color: antiquewhite;
+  height: 10%;
+  
+}
+.Quiz-control-done {
+  display: inline-block;
+  width: 30%;
+}
+.Quiz-control-go {
+  display: inline-block;
+  width: 30%;
+
+
+}
+.Quiz-control-total {
+  display: inline-block;
+  color: darkolivegreen;
+  width: 30%;
+
+
+}
 .Map {
   margin-left: 2%;
+  background-image: url("eu-c-02.jpg");
+  background-size: cover;
+  background-position: 100% 0%;
+  background-origin: border-box;
+  background-clip: border-box  ;
+  vertical-align: middle;
+
 }
-
-
 
