@@ -96,11 +96,18 @@ body {
   background-color: darkolivegreen;
 
   height: 76%;
-  overflow: scroll;
+  overflow: auto;
   color: antiquewhite;
 }
 .Quiz-tests_test {
   border-bottom: antiquewhite solid 1px;
+  display: flex;
+
+}
+fieldset {
+  margin: 0;
+  border: none;
+  padding: 0%;
 }
 .Quiz-tests_test-question {
   text-align: left;
@@ -108,8 +115,6 @@ body {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   width: 80%;
-  display: inline-block;
-  vertical-align: middle;
 }
 .Quiz-tests_test-question-text {
   padding: 0.5rem;
@@ -120,17 +125,19 @@ body {
 }
 .Quiz-tests_test-answer {
   padding: 0.2rem;
+
 }
 .Quiz-tests_test-mark {
-  display: inline-block;
-  width: calc(100% - 81%);
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
 }
 
 .Quiz-control {
   background-color: #f4976c;
   height: 10%;
-  display: flex; 4esdmnb 
+  display: flex;
   justify-content: space-around;
   align-items: center;
 }
