@@ -3,6 +3,8 @@
     {
       "id": "0",
       "country": "Norway",
+      "selected": false,
+      "passed": false,
       "tests": [
         {
           "id": "0",
@@ -142,31 +144,50 @@
       "done": false
     },
     {
-      "id": "1",
-      "country": "Denmark",
+      "id": "0",
+      "country": "Norway",
+      "selected": false,
+      "passed": false,
       "tests": [
         {
           "id": "0",
           "question_text": "Which country is it?",
+          "name":"country",
           "answers": [
             {
-              "Georgia": false,
+              "answer_text": "France",
+              "isitright": false,
+              "checked": "checked",
+              "value": "France",
               "id": "0"
             },
             {
-              "Norway": false,
+              "answer_text": "Denmark",
+              "isitright": false,
+              "checked": "",
+              "value": "Denmark",
               "id": "1"
             },
             {
-              "Switherland": false,
+              "answer_text": "Finland",
+              "isitright": false,
+              "checked": "",
+              "value": "Finland",
               "id": "2"
             },
             {
-              "Denmark": true,
+              "answer_text": "Georgia",
+              "isitright": false,
+              "checked": "",
+              "value": "Georgia",
               "id": "3"
             },
+
             {
-              "Ukraine": false,
+              "answer_text": "Norway",
+              "isitright": true,
+              "checked": "",
+              "value": "Norway",
               "id": "4"
             }
           ],
@@ -174,26 +195,44 @@
         },
         {
           "id": "1",
-          "question_text": "County population?",
+          "question_text": "Country population?",
+          "name":"population",
+
           "answers": [
             {
-              "Georgia": false,
+              "answer_text": "20 mil",
+              "isitright": false,
+              "checked": "checked",
+              "value": "20 mil",
               "id": "0"
             },
             {
-              "Norway": true,
+              "answer_text": "15 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "15 mil",
               "id": "1"
             },
             {
-              "Switherland": false,
+              "answer_text": "54 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "54 mil",
               "id": "2"
             },
             {
-              "Denmark": false,
+              "answer_text": "35 mil",
+              "isitright": true,
+              "checked": "",
+              "value": "35 mil",
               "id": "3"
             },
+
             {
-              "Ukraine": false,
+              "answer_text": "40 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "40 mil",
               "id": "4"
             }
           ],
@@ -202,25 +241,42 @@
         {
           "id": "2",
           "question_text": "Capital of the country?",
+          "name":"capital",
           "answers": [
             {
-              "Georgia": false,
+              "answer_text": "Paris",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Paris",
               "id": "0"
             },
             {
-              "Norway": true,
+              "answer_text": "Tbilisi",
+              "isitright": false,
+              "checked": "",
+              "value": "Tbilisi",
               "id": "1"
             },
             {
-              "Switherland": false,
+              "answer_text": "Berlin",
+              "isitright": false,
+              "checked": "",
+              "value": "Berlin",
               "id": "2"
             },
             {
-              "Denmark": false,
+              "answer_text": "London",
+              "isitright": false,
+              "checked": "",
+              "value": "London",
               "id": "3"
             },
+
             {
-              "Ukraine": false,
+              "answer_text": "Oslo",
+              "isitright": true,
+              "checked": "",
+              "value": "Oslo",
               "id": "4"
             }
           ],
