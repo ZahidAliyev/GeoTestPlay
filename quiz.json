@@ -144,8 +144,8 @@
       "done": false
     },
     {
-      "id": "0",
-      "country": "Norway",
+      "id": "1",
+      "country": "Denmark",
       "selected": false,
       "passed": false,
       "tests": [
@@ -163,7 +163,7 @@
             },
             {
               "answer_text": "Denmark",
-              "isitright": false,
+              "isitright": true,
               "checked": "",
               "value": "Denmark",
               "id": "1"
@@ -185,7 +185,7 @@
 
             {
               "answer_text": "Norway",
-              "isitright": true,
+              "isitright": false,
               "checked": "",
               "value": "Norway",
               "id": "4"

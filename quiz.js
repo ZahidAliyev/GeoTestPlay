@@ -1,79 +1,70 @@
 const doneButtn = document.querySelector(".Quiz-control-done > button");
 const totalUi = document.querySelector(".Quiz-control-total > h2");
-
+const go = document.querySelector(".Quiz-control-go > button");
 const countrySelect = (data) => {
-  const countriesForRandom = data.countries.filter(country => {
+  console.log("Country for select data", data);
+  const countriesForRandomIndex = data.countries.filter((country) => {
     return country.selected === false;
   });
-  const index = Math.floor(Math.random() * Math.floor(countriesForRandom.length));
-  data.countries[index].selected = true;
-  
-}
-const done = (data)=> {
-  const selectedCountry = data.countries.filter(country => {
-    return country.selected === true && !country.passed
+  console.log("countriesForRandomIndex length", countriesForRandomIndex.length);
+  const index = Math.floor(
+    Math.random() * Math.floor(countriesForRandomIndex.length)
+  );
+  console.log("index", index);
+  if (countriesForRandomIndex.length === 0) {
+    return undefined;
+  } else {
+    countriesForRandomIndex[index].selected = true;
+  }
+};
+// Done button function
+const done = (data) => {
+  const selectedCountry = data.countries.filter((country) => {
+    return country.selected === true && !country.passed;
   })[0];
   const mark = document.querySelectorAll(".Quiz-tests_test-mark > p");
 
-  selectedCountry.tests.forEach((test, testindex)=> {
+  selectedCountry.tests.forEach((test, testindex) => {
     const inputs = document.getElementsByName(`${test.name}`);
     test.answers.forEach((answer, index) => {
-      console.log("Input checked: " + inputs[index].checked);
-      console.log("answer: " + answer.isitright);
-      if(inputs[index].checked && answer.isitright) {
-        console.log("Mark to True");
-
+      if (inputs[index].checked && answer.isitright) {
         test.mark = true;
         selectedCountry.total += 1;
-        console.log(mark[testindex])
         mark[testindex].innerHTML = "True";
-        
       } else {
-        console.log("Mark to False");
-        if(!test.mark){
+        if (!test.mark) {
           mark[testindex].innerHTML = "False";
-
         }
-
-      };
+      }
     });
-    // if(test.mark) {
-    //   mark[testindex].innerHTML = "True";
-    // } else {
-    //   mark[testindex].innerHTML = "False";
-    // }
-
   });
   selectedCountry.passed = true;
   document.querySelector(".Quiz-control-go > button").disabled = false;
   totalUi.innerHTML = `Total: ${selectedCountry.total}`;
   doneButtn.disabled = true;
-
-}
+};
 
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
-    doneButtn.disabled = false;
-    
-    countrySelect(quizDataCopy);
-    const selectedCountry = quizDataCopy.countries.filter(country => {
-      return country.selected === true && !country.passed
-    })[0];
+  doneButtn.disabled = false;
+  console.log("Start Quiz:quizDataCopy before country select", quizDataCopy);
+  countrySelect(quizDataCopy);
+  const selectedCountry = quizDataCopy.countries.filter((country) => {
+    return country.selected === true && !country.passed;
+  })[0];
 
+  const form = document.querySelector("#quiz-form");
 
-    console.log(selectedCountry);
+  if (selectedCountry != undefined) {
+    totalUi.innerHTML = `Total: ${selectedCountry.total}`;
 
-    if(selectedCountry != undefined) {
-      totalUi.innerHTML = `Total: ${selectedCountry.total}`;
+    form.innerHTML = "";
+    // Looping trough array of tests for given country to make html and put quizDataCopy into html
+    selectedCountry.tests.forEach((test, testIndex) => {
+      // getting dom form element to put quizDataCopy in it
 
-      const form = document.querySelector("#quiz-form");
-      form.innerHTML = "";
-      // Looping trough array of tests for given country to make html and put quizDataCopy into html 
-      selectedCountry.tests.forEach((test, testIndex) => {
-        // getting dom form element to put quizDataCopy in it
-        
-        // adding test container for each test in country tests and text quizDataCopy as a question
-        form.innerHTML += `<div class="Quiz-tests_test">
+      // adding test container for each test in country tests and text quizDataCopy as a question
+      form.innerHTML += `<div class="Quiz-tests_test">
             <fieldset class="Quiz-tests_test-question">
               <legend class="Quiz-tests_test-question-text">
                 <h3>${test.question_text}</h3>
@@ -85,52 +76,46 @@ function StartQuiz(quizDataCopy) {
             </div>
             </div>
             `;
-        // only after adding html test div with dieldset to form, selecting all fieldset elements
-        const fieldset = document.querySelectorAll(".Quiz-tests_test-question");
-        // creating div for adding all radio inputs in it
-        const options = document.createElement('div');
-        options.setAttribute('class', 'Quiz-tests_test-answers')
-        // looping through each answer in answers data from test to add radio inputs HTML to options and insert answer text in each
-        test.answers.forEach((answer) => {
-          options.innerHTML += `
+      // only after adding html test div with dieldset to form, selecting all fieldset elements
+      const fieldset = document.querySelectorAll(".Quiz-tests_test-question");
+      // creating div for adding all radio inputs in it
+      const options = document.createElement("div");
+      options.setAttribute("class", "Quiz-tests_test-answers");
+      // looping through each answer in answers data from test to add radio inputs HTML to options and insert answer text in each
+      test.answers.forEach((answer) => {
+        options.innerHTML += `
           <div class="Quiz-tests_test-answer">
   
             <input type="radio" name="${test.name}" id="${answer.answer_text}" value="${answer.value}"/>
             <label for="${answer.answer_text}">${answer.answer_text}</label>
           </div>
-          `
-          ;
-        });
-        // after adding all inputs to options container, we append options container to fieldset of each iterated test
-        fieldset[testIndex].appendChild(options);
-  
+          `;
       });
-    } else {
-      getQuizDataandStartGame("./quiz.json");
-
-    }
-
-
+      // after adding all inputs to options container, we append options container to fieldset of each iterated test
+      fieldset[testIndex].appendChild(options);
+    });
+  } else {
+    form.innerHTML = `<div><h2>Test finished</h2></div>`;
+    go.disabled = true;
+  }
 }
 
-
-
 async function getQuizDataandStartGame(url) {
-      //Fething data asynchroniously with asynch await
-      const res = await fetch(url);
-      //Converting it to json format
-      const data = await res.json();
+  //Fething data asynchroniously with asynch await
+  const res = await fetch(url);
+  //Converting it to json format
+  const data = await res.json();
 
-      const dataCopy = Object.assign({}, data);
-      try {
-        StartQuiz(dataCopy);
-        const doneButton = document.querySelector(".Quiz-control-done");
-        doneButton.addEventListener("click", ()=> done(dataCopy));
-        const go = document.querySelector(".Quiz-control-go > button");
-        go.addEventListener("click", ()=> StartQuiz(dataCopy));
+  const dataCopy = Object.assign({}, data);
 
-      } catch(err) {
-        console.log(err);
-      }
-};
+  try {
+    // console.log("First dataCopy before start", dataCopy)
+    StartQuiz(dataCopy);
+    doneButtn.addEventListener("click", () => done(dataCopy));
+
+    go.addEventListener("click", () => StartQuiz(dataCopy));
+  } catch (err) {
+    console.log("err", err);
+  }
+}
 getQuizDataandStartGame("./quiz.json");
