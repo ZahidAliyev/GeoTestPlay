@@ -1,3 +1,6 @@
+const doneButtn = document.querySelector(".Quiz-control-done > button");
+const totalUi = document.querySelector(".Quiz-control-total > h2");
+
 const countrySelect = (data) => {
   const countriesForRandom = data.countries.filter(country => {
     return country.selected === false;
@@ -10,38 +13,59 @@ const done = (data)=> {
   const selectedCountry = data.countries.filter(country => {
     return country.selected === true && !country.passed
   })[0];
-  selectedCountry.tests.forEach((test, index)=> {
+  const mark = document.querySelectorAll(".Quiz-tests_test-mark > p");
+
+  selectedCountry.tests.forEach((test, testindex)=> {
     const inputs = document.getElementsByName(`${test.name}`);
     test.answers.forEach((answer, index) => {
+      console.log("Input checked: " + inputs[index].checked);
+      console.log("answer: " + answer.isitright);
       if(inputs[index].checked && answer.isitright) {
+        console.log("Mark to True");
+
         test.mark = true;
         selectedCountry.total += 1;
+        console.log(mark[testindex])
+        mark[testindex].innerHTML = "True";
         
+      } else {
+        console.log("Mark to False");
+        if(!test.mark){
+          mark[testindex].innerHTML = "False";
+
+        }
+
       };
     });
-    const mark = document.querySelectorAll(".Quiz-tests_test-mark > p");
-    if(test.mark) {
-      mark[index].innerHTML = "True";
-    } else {
-      mark[index].innerHTML = "False";
-    }
+    // if(test.mark) {
+    //   mark[testindex].innerHTML = "True";
+    // } else {
+    //   mark[testindex].innerHTML = "False";
+    // }
 
   });
   selectedCountry.passed = true;
   document.querySelector(".Quiz-control-go > button").disabled = false;
-  document.querySelector(".Quiz-control-total > h2").innerHTML = `Total: ${selectedCountry.total}`;
+  totalUi.innerHTML = `Total: ${selectedCountry.total}`;
+  doneButtn.disabled = true;
 
 }
 
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
+    doneButtn.disabled = false;
+    
     countrySelect(quizDataCopy);
     const selectedCountry = quizDataCopy.countries.filter(country => {
       return country.selected === true && !country.passed
     })[0];
+
+
     console.log(selectedCountry);
 
     if(selectedCountry != undefined) {
+      totalUi.innerHTML = `Total: ${selectedCountry.total}`;
+
       const form = document.querySelector("#quiz-form");
       form.innerHTML = "";
       // Looping trough array of tests for given country to make html and put quizDataCopy into html 
