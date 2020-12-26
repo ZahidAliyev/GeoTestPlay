@@ -1,20 +1,41 @@
 const doneButtn = document.querySelector(".Quiz-control-done > button");
 const totalUi = document.querySelector(".Quiz-control-total > h2");
 const go = document.querySelector(".Quiz-control-go > button");
+// CAnvas
+const drawMap = (country) => {
+  console.log(country.image);
+  const canvas = document.querySelector("#map");
+
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = document.querySelector(".main-game-piece").scrollWidth;
+  canvas.height = document.querySelector(".main-game-piece").scrollHeight;
+  
+  const image = new Image();
+  image.src = `${country.image}`;
+  ctx.fillRect(0,0, canvas.width, canvas.height);
+  image.onload = () => {
+    console.log(image.width);
+    console.log(image.height);
+    
+    ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+
+  }
+}
+
+
 const countrySelect = (data) => {
-  console.log("Country for select data", data);
   const countriesForRandomIndex = data.countries.filter((country) => {
     return country.selected === false;
   });
-  console.log("countriesForRandomIndex length", countriesForRandomIndex.length);
   const index = Math.floor(
     Math.random() * Math.floor(countriesForRandomIndex.length)
   );
-  console.log("index", index);
   if (countriesForRandomIndex.length === 0) {
     return undefined;
   } else {
     countriesForRandomIndex[index].selected = true;
+    return countriesForRandomIndex[index];
   }
 };
 // Done button function
@@ -39,7 +60,7 @@ const done = (data) => {
     });
   });
   selectedCountry.passed = true;
-  document.querySelector(".Quiz-control-go > button").disabled = false;
+  go.disabled = false;
   totalUi.innerHTML = `Total: ${selectedCountry.total}`;
   doneButtn.disabled = true;
 };
@@ -47,15 +68,14 @@ const done = (data) => {
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
   doneButtn.disabled = false;
-  console.log("Start Quiz:quizDataCopy before country select", quizDataCopy);
-  countrySelect(quizDataCopy);
-  const selectedCountry = quizDataCopy.countries.filter((country) => {
-    return country.selected === true && !country.passed;
-  })[0];
-
+  const selectedCountry = countrySelect(quizDataCopy);
+  // const selectedCountry = quizDataCopy.countries.filter((country) => {
+  //   return country.selected === true && !country.passed;
+  // })[0];
   const form = document.querySelector("#quiz-form");
 
   if (selectedCountry != undefined) {
+    drawMap(selectedCountry);
     totalUi.innerHTML = `Total: ${selectedCountry.total}`;
 
     form.innerHTML = "";
@@ -109,7 +129,6 @@ async function getQuizDataandStartGame(url) {
   const dataCopy = Object.assign({}, data);
 
   try {
-    // console.log("First dataCopy before start", dataCopy)
     StartQuiz(dataCopy);
     doneButtn.addEventListener("click", () => done(dataCopy));
 

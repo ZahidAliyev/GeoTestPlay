@@ -140,6 +140,7 @@
           "mark": false
         }
       ],
+      "image": "./images/norway.jpg",
       "total": 0,
       "done": false
     },
@@ -283,6 +284,7 @@
           "mark": false
         }
       ],
+      "image": "./images/denmark.jpg",
       "total": 0,
       "done": false
     }
