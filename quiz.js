@@ -1,28 +1,8 @@
+import {drawMap, clearMap, drawTotalRightAnswers} from "./map.js"
+
 const doneButtn = document.querySelector(".Quiz-control-done > button");
 const totalUi = document.querySelector(".Quiz-control-total > h2");
 const go = document.querySelector(".Quiz-control-go > button");
-// CAnvas
-const drawMap = (country) => {
-  console.log(country.image);
-  const canvas = document.querySelector("#map");
-
-  const ctx = canvas.getContext('2d');
-
-  canvas.width = document.querySelector(".main-game-piece").scrollWidth;
-  canvas.height = document.querySelector(".main-game-piece").scrollHeight;
-  
-  const image = new Image();
-  image.src = `${country.image}`;
-  ctx.fillRect(0,0, canvas.width, canvas.height);
-  image.onload = () => {
-    console.log(image.width);
-    console.log(image.height);
-    
-    ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
-
-  }
-}
-
 
 const countrySelect = (data) => {
   const countriesForRandomIndex = data.countries.filter((country) => {
@@ -46,11 +26,17 @@ const done = (data) => {
   const mark = document.querySelectorAll(".Quiz-tests_test-mark > p");
 
   selectedCountry.tests.forEach((test, testindex) => {
+    data.testsQuantity += 1;
+    console.log(data.testsQuantity)
     const inputs = document.getElementsByName(`${test.name}`);
     test.answers.forEach((answer, index) => {
+      
       if (inputs[index].checked && answer.isitright) {
         test.mark = true;
         selectedCountry.total += 1;
+        console.log(selectedCountry.total)
+        data.allCountriesTotal += 1;
+        console.log(data.allCountriesTotal);
         mark[testindex].innerHTML = "True";
       } else {
         if (!test.mark) {
@@ -116,6 +102,10 @@ function StartQuiz(quizDataCopy) {
     });
   } else {
     form.innerHTML = `<div><h2>Test finished</h2></div>`;
+    clearMap();
+    console.log(quizDataCopy.testsQuantity);
+    console.log(quizDataCopy.allCountriesTotal)
+    drawTotalRightAnswers(quizDataCopy.testsQuantity, quizDataCopy.allCountriesTotal);
     go.disabled = true;
   }
 }

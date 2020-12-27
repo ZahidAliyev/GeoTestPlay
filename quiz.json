@@ -288,5 +288,7 @@
       "total": 0,
       "done": false
     }
-  ]
+  ],
+  "allCountriesTotal": 0,
+  "testsQuantity": 0
 }
