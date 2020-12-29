@@ -1,4 +1,4 @@
-import {drawMap, clearMap, drawTotalRightAnswers} from "./map.js"
+import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 
 const doneButtn = document.querySelector(".Quiz-control-done > button");
 const totalUi = document.querySelector(".Quiz-control-total > h2");
@@ -20,6 +20,7 @@ const countrySelect = (data) => {
 };
 // Done button function
 const done = (data) => {
+  console.log(data.countries);
   const selectedCountry = data.countries.filter((country) => {
     return country.selected === true && !country.passed;
   })[0];
@@ -27,16 +28,15 @@ const done = (data) => {
 
   selectedCountry.tests.forEach((test, testindex) => {
     data.testsQuantity += 1;
-    console.log(data.testsQuantity)
+    // console.log(data.testsQuantity)
     const inputs = document.getElementsByName(`${test.name}`);
     test.answers.forEach((answer, index) => {
-      
       if (inputs[index].checked && answer.isitright) {
         test.mark = true;
         selectedCountry.total += 1;
-        console.log(selectedCountry.total)
+        // console.log(selectedCountry.total)
         data.allCountriesTotal += 1;
-        console.log(data.allCountriesTotal);
+        // console.log(data.allCountriesTotal);
         mark[testindex].innerHTML = "True";
       } else {
         if (!test.mark) {
@@ -54,6 +54,8 @@ const done = (data) => {
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
   doneButtn.disabled = false;
+  go.disabled = true;
+  console.log(quizDataCopy.countries);
   const selectedCountry = countrySelect(quizDataCopy);
   // const selectedCountry = quizDataCopy.countries.filter((country) => {
   //   return country.selected === true && !country.passed;
@@ -103,9 +105,11 @@ function StartQuiz(quizDataCopy) {
   } else {
     form.innerHTML = `<div><h2>Test finished</h2></div>`;
     clearMap();
-    console.log(quizDataCopy.testsQuantity);
-    console.log(quizDataCopy.allCountriesTotal)
-    drawTotalRightAnswers(quizDataCopy.testsQuantity, quizDataCopy.allCountriesTotal);
+
+    drawTotalRightAnswers(
+      quizDataCopy.testsQuantity,
+      quizDataCopy.allCountriesTotal
+    );
     go.disabled = true;
   }
 }
