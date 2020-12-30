@@ -1,6 +1,13 @@
 import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 
-const doneButtn = document.querySelector(".Quiz-control-done > button");
+// const doneButtn = document.querySelector(".Quiz-control-done > button");
+const quizControlDoneAndRetryDiv = document.querySelector(".Quiz-control-done");
+const doneButton = document.createElement("button");
+doneButton.setAttribute("id", "doneButton");
+doneButton.textContent = "Done";
+const retryButton = document.createElement("button");
+retryButton.setAttribute("id", "retryButton");
+retryButton.textContent = "Retry";
 const totalUi = document.querySelector(".Quiz-control-total > h2");
 const go = document.querySelector(".Quiz-control-go > button");
 
@@ -20,7 +27,8 @@ const countrySelect = (data) => {
 };
 // Done button function
 const done = (data) => {
-  console.log(data.countries);
+  console.log("DONE");
+
   const selectedCountry = data.countries.filter((country) => {
     return country.selected === true && !country.passed;
   })[0];
@@ -28,15 +36,12 @@ const done = (data) => {
 
   selectedCountry.tests.forEach((test, testindex) => {
     data.testsQuantity += 1;
-    // console.log(data.testsQuantity)
     const inputs = document.getElementsByName(`${test.name}`);
     test.answers.forEach((answer, index) => {
       if (inputs[index].checked && answer.isitright) {
         test.mark = true;
         selectedCountry.total += 1;
-        // console.log(selectedCountry.total)
         data.allCountriesTotal += 1;
-        // console.log(data.allCountriesTotal);
         mark[testindex].innerHTML = "True";
       } else {
         if (!test.mark) {
@@ -48,14 +53,16 @@ const done = (data) => {
   selectedCountry.passed = true;
   go.disabled = false;
   totalUi.innerHTML = `Total: ${selectedCountry.total}`;
-  doneButtn.disabled = true;
+  doneButton.disabled = true;
 };
-
+/////////START or Continue Quiz with Copied Data
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
-  doneButtn.disabled = false;
+  quizControlDoneAndRetryDiv.innerHTML = "";
+  quizControlDoneAndRetryDiv.appendChild(doneButton);
+  doneButton.disabled = false;
   go.disabled = true;
-  console.log(quizDataCopy.countries);
+  console.log("StartQuiz");
   const selectedCountry = countrySelect(quizDataCopy);
   // const selectedCountry = quizDataCopy.countries.filter((country) => {
   //   return country.selected === true && !country.passed;
@@ -102,6 +109,7 @@ function StartQuiz(quizDataCopy) {
       // after adding all inputs to options container, we append options container to fieldset of each iterated test
       fieldset[testIndex].appendChild(options);
     });
+    //If TEST FINISHED
   } else {
     form.innerHTML = `<div><h2>Test finished</h2></div>`;
     clearMap();
@@ -111,22 +119,48 @@ function StartQuiz(quizDataCopy) {
       quizDataCopy.allCountriesTotal
     );
     go.disabled = true;
+    quizControlDoneAndRetryDiv.innerHTML = "";
+
+    quizControlDoneAndRetryDiv.appendChild(retryButton);
   }
 }
 
 async function getQuizDataandStartGame(url) {
+  console.log("getQuizandStart");
   //Fething data asynchroniously with asynch await
   const res = await fetch(url);
   //Converting it to json format
   const data = await res.json();
 
   const dataCopy = Object.assign({}, data);
-
+  
   try {
+    //DONT USE EVENT LISTENER ON BUTTONS. we shouldn’t use addEventListener too often since it keeps adding new event listeners to a DOM object without discarding the old ones.
+    console.log("try");
     StartQuiz(dataCopy);
-    doneButtn.addEventListener("click", () => done(dataCopy));
+    // doneButton.addEventListener("click", (e) => {
+    //   e.stopPropagation();
+    //   console.log("done click");
 
-    go.addEventListener("click", () => StartQuiz(dataCopy));
+    //   console.log(dataCopy);
+    //   done(dataCopy);
+    // });
+    // retryButton.addEventListener("click", (e) => {
+    //   e.stopPropagation();
+    //   console.log("retry click");
+    //   // getQuizDataandStartGame("./quiz.json");
+
+      
+    // });
+    doneButton.onclick = () => done(dataCopy);
+    retryButton.onclick = () => getQuizDataandStartGame("./quiz.json");
+    go.onclick = () => StartQuiz(dataCopy);
+    // go.addEventListener("click", (e) => {
+    //   e.stopPropagation();
+
+    //   StartQuiz(dataCopy);
+    //   console.log("go click");
+    // });
   } catch (err) {
     console.log("err", err);
   }
