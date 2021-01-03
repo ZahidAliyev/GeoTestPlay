@@ -4,8 +4,8 @@ const canvas = document.querySelector("#map");
 
 const ctx = canvas.getContext("2d");
 
-canvas.width = document.querySelector(".main-game-piece").scrollWidth;
-canvas.height = document.querySelector(".main-game-piece").scrollHeight;
+canvas.width = document.querySelector(".Map").scrollWidth;
+canvas.height = document.querySelector(".Map").scrollHeight;
 
 export const drawMap = (country) => {
   const image = new Image();

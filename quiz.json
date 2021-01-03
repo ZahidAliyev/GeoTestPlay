@@ -9,7 +9,7 @@
         {
           "id": "0",
           "question_text": "Which country is it?",
-          "name":"country",
+          "name": "country",
           "answers": [
             {
               "answer_text": "France",
@@ -53,32 +53,32 @@
         {
           "id": "1",
           "question_text": "Country population?",
-          "name":"population",
+          "name": "population",
 
           "answers": [
             {
-              "answer_text": "20 mil",
+              "answer_text": "8.5 mil",
               "isitright": false,
               "checked": "checked",
               "value": "20 mil",
               "id": "0"
             },
             {
-              "answer_text": "15 mil",
+              "answer_text": "9 mil",
               "isitright": false,
               "checked": "",
               "value": "15 mil",
               "id": "1"
             },
             {
-              "answer_text": "54 mil",
+              "answer_text": "15 mil",
               "isitright": false,
               "checked": "",
               "value": "54 mil",
               "id": "2"
             },
             {
-              "answer_text": "35 mil",
+              "answer_text": "5.5 mil",
               "isitright": true,
               "checked": "",
               "value": "35 mil",
@@ -86,7 +86,7 @@
             },
 
             {
-              "answer_text": "40 mil",
+              "answer_text": "25.5 mil",
               "isitright": false,
               "checked": "",
               "value": "40 mil",
@@ -98,20 +98,20 @@
         {
           "id": "2",
           "question_text": "Capital of the country?",
-          "name":"capital",
+          "name": "capital",
           "answers": [
             {
-              "answer_text": "Paris",
+              "answer_text": "Bergen",
               "isitright": false,
               "checked": "checked",
-              "value": "Paris",
+              "value": "Bergen",
               "id": "0"
             },
             {
-              "answer_text": "Tbilisi",
+              "answer_text": "Tromso",
               "isitright": false,
               "checked": "",
-              "value": "Tbilisi",
+              "value": "Tromso",
               "id": "1"
             },
             {
@@ -134,6 +134,94 @@
               "isitright": true,
               "checked": "",
               "value": "Oslo",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "3",
+          "question_text": "What currency is used in this country?",
+          "name": "currency",
+          "answers": [
+            {
+              "answer_text": "kuna",
+              "isitright": false,
+              "checked": "checked",
+              "value": "kuna",
+              "id": "0"
+            },
+            {
+              "answer_text": "krone",
+              "isitright": true,
+              "checked": "",
+              "value": "krone",
+              "id": "1"
+            },
+            {
+              "answer_text": "franc",
+              "isitright": false,
+              "checked": "",
+              "value": "franc",
+              "id": "2"
+            },
+            {
+              "answer_text": "dinar",
+              "isitright": false,
+              "checked": "",
+              "value": "dinar",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "lira",
+              "isitright": false,
+              "checked": "",
+              "value": "lira",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "4",
+          "question_text": "Main export of this country?",
+          "name": "export",
+          "answers": [
+            {
+              "answer_text": "Fish",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Fish",
+              "id": "0"
+            },
+            {
+              "answer_text": "Mineral fuels including oil",
+              "isitright": true,
+              "checked": "",
+              "value": "Mineral fuels including oil",
+              "id": "1"
+            },
+            {
+              "answer_text": "Machinery including computers",
+              "isitright": false,
+              "checked": "",
+              "value": "Machinery including computers",
+              "id": "2"
+            },
+            {
+              "answer_text": "Aluminum",
+              "isitright": false,
+              "checked": "",
+              "value": "Aluminum",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Ships, boats",
+              "isitright": false,
+              "checked": "",
+              "value": "Ships, boats",
               "id": "4"
             }
           ],
@@ -141,19 +229,18 @@
         }
       ],
       "image": "./images/norway.jpg",
-      "total": 0,
-      "done": false
+      "total": 0
     },
     {
       "id": "1",
-      "country": "Denmark",
+      "country": "United Kingdom",
       "selected": false,
       "passed": false,
       "tests": [
         {
           "id": "0",
           "question_text": "Which country is it?",
-          "name":"country",
+          "name": "country",
           "answers": [
             {
               "answer_text": "France",
@@ -164,14 +251,14 @@
             },
             {
               "answer_text": "Denmark",
-              "isitright": true,
+              "isitright": false,
               "checked": "",
               "value": "Denmark",
               "id": "1"
             },
             {
-              "answer_text": "Finland",
-              "isitright": false,
+              "answer_text": "United Kingdom",
+              "isitright": true,
               "checked": "",
               "value": "Finland",
               "id": "2"
@@ -197,40 +284,40 @@
         {
           "id": "1",
           "question_text": "Country population?",
-          "name":"population",
+          "name": "population",
 
           "answers": [
             {
-              "answer_text": "20 mil",
-              "isitright": false,
+              "answer_text": "67 mil",
+              "isitright": true,
               "checked": "checked",
               "value": "20 mil",
               "id": "0"
             },
             {
-              "answer_text": "15 mil",
+              "answer_text": "83 mil",
               "isitright": false,
               "checked": "",
               "value": "15 mil",
               "id": "1"
             },
             {
-              "answer_text": "54 mil",
+              "answer_text": "52 mil",
               "isitright": false,
               "checked": "",
               "value": "54 mil",
               "id": "2"
             },
             {
-              "answer_text": "35 mil",
-              "isitright": true,
+              "answer_text": "34.5 mil",
+              "isitright": false,
               "checked": "",
               "value": "35 mil",
               "id": "3"
             },
 
             {
-              "answer_text": "40 mil",
+              "answer_text": "102 mil",
               "isitright": false,
               "checked": "",
               "value": "40 mil",
@@ -242,51 +329,831 @@
         {
           "id": "2",
           "question_text": "Capital of the country?",
-          "name":"capital",
+          "name": "capital",
           "answers": [
             {
-              "answer_text": "Paris",
+              "answer_text": "Manchester",
               "isitright": false,
               "checked": "checked",
-              "value": "Paris",
+              "value": "Manchester",
               "id": "0"
             },
             {
-              "answer_text": "Tbilisi",
+              "answer_text": "Edinburgh",
               "isitright": false,
               "checked": "",
-              "value": "Tbilisi",
+              "value": "Edinburgh",
               "id": "1"
             },
             {
-              "answer_text": "Berlin",
+              "answer_text": "Glasgow",
               "isitright": false,
               "checked": "",
-              "value": "Berlin",
+              "value": "Glasgow",
               "id": "2"
             },
             {
               "answer_text": "London",
-              "isitright": false,
+              "isitright": true,
               "checked": "",
               "value": "London",
               "id": "3"
             },
 
             {
-              "answer_text": "Oslo",
+              "answer_text": "Mumbai",
+              "isitright": false,
+              "checked": "",
+              "value": "Mumbai",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "3",
+          "question_text": "What  is used in this country?",
+          "name": "currcurrencyency",
+          "answers": [
+            {
+              "answer_text": "lev",
+              "isitright": false,
+              "checked": "lev",
+              "value": "Paris",
+              "id": "0"
+            },
+            {
+              "answer_text": "koruna",
+              "isitright": false,
+              "checked": "",
+              "value": "koruna",
+              "id": "1"
+            },
+            {
+              "answer_text": "forint",
+              "isitright": false,
+              "checked": "",
+              "value": "forint",
+              "id": "2"
+            },
+            {
+              "answer_text": "krone",
+              "isitright": false,
+              "checked": "",
+              "value": "krone",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "pound sterling",
               "isitright": true,
               "checked": "",
-              "value": "Oslo",
+              "value": "pound sterling",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "4",
+          "question_text": "Main export of this country?",
+          "name": "export",
+          "answers": [
+            {
+              "answer_text": "Pharmaceuticals",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Pharmaceuticals",
+              "id": "0"
+            },
+            {
+              "answer_text": "Mineral fuels including oil",
+              "isitright": false,
+              "checked": "",
+              "value": "Mineral fuels including oil",
+              "id": "1"
+            },
+            {
+              "answer_text": "Gems, precious metals",
+              "isitright": false,
+              "checked": "",
+              "value": "Gems, precious metals",
+              "id": "2"
+            },
+            {
+              "answer_text": "Vehicles",
+              "isitright": false,
+              "checked": "",
+              "value": "Vehicles",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Machinery including computers",
+              "isitright": true,
+              "checked": "",
+              "value": "Machinery including computers",
               "id": "4"
             }
           ],
           "mark": false
         }
       ],
-      "image": "./images/denmark.jpg",
-      "total": 0,
-      "done": false
+      "image": "./images/UnitedKingdom.jpg",
+      "total": 0
+    },
+    {
+      "id": "2",
+      "country": "Portugal",
+      "selected": false,
+      "passed": false,
+      "tests": [
+        {
+          "id": "0",
+          "question_text": "Which country is it?",
+          "name": "country",
+          "answers": [
+            {
+              "answer_text": "France",
+              "isitright": false,
+              "checked": "checked",
+              "value": "France",
+              "id": "0"
+            },
+            {
+              "answer_text": "Denmark",
+              "isitright": false,
+              "checked": "",
+              "value": "Denmark",
+              "id": "1"
+            },
+            {
+              "answer_text": "Finland",
+              "isitright": false,
+              "checked": "",
+              "value": "Finland",
+              "id": "2"
+            },
+            {
+              "answer_text": "Portugal",
+              "isitright": true,
+              "checked": "",
+              "value": "Georgia",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Norway",
+              "isitright": false,
+              "checked": "",
+              "value": "Norway",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "1",
+          "question_text": "Country population?",
+          "name": "population",
+
+          "answers": [
+            {
+              "answer_text": "20 mil",
+              "isitright": false,
+              "checked": "checked",
+              "value": "19 mil",
+              "id": "0"
+            },
+            {
+              "answer_text": "10.5 mil",
+              "isitright": true,
+              "checked": "",
+              "value": "15 mil",
+              "id": "1"
+            },
+            {
+              "answer_text": "8 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "54 mil",
+              "id": "2"
+            },
+            {
+              "answer_text": "28 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "35 mil",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "35 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "40 mil",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "2",
+          "question_text": "Capital of the country?",
+          "name": "capital",
+          "answers": [
+            {
+              "answer_text": "Porto",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Porto",
+              "id": "0"
+            },
+            {
+              "answer_text": "Lisbon",
+              "isitright": true,
+              "checked": "",
+              "value": "Lisbon",
+              "id": "1"
+            },
+            {
+              "answer_text": "Evora",
+              "isitright": false,
+              "checked": "",
+              "value": "Evora",
+              "id": "2"
+            },
+            {
+              "answer_text": "Barcelona",
+              "isitright": false,
+              "checked": "",
+              "value": "Barcelona",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Braga",
+              "isitright": false,
+              "checked": "",
+              "value": "Braga",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "3",
+          "question_text": "What currency is used in this country?",
+          "name": "currency",
+          "answers": [
+            {
+              "answer_text": "euro",
+              "isitright": true,
+              "checked": "checked",
+              "value": "euro",
+              "id": "0"
+            },
+            {
+              "answer_text": "lev",
+              "isitright": false,
+              "checked": "",
+              "value": "lev",
+              "id": "1"
+            },
+            {
+              "answer_text": "escudo",
+              "isitright": false,
+              "checked": "",
+              "value": "escudo",
+              "id": "2"
+            },
+            {
+              "answer_text": "lek",
+              "isitright": false,
+              "checked": "",
+              "value": "lek",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "franc",
+              "isitright": false,
+              "checked": "",
+              "value": "franc",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "4",
+          "question_text": "Main export of this country?",
+          "name": "export",
+          "answers": [
+            {
+              "answer_text": "Vehicles",
+              "isitright": true,
+              "checked": "checked",
+              "value": "Vehicles",
+              "id": "0"
+            },
+            {
+              "answer_text": "Mineral fuels including oil",
+              "isitright": false,
+              "checked": "",
+              "value": "Mineral fuels including oil",
+              "id": "1"
+            },
+            {
+              "answer_text": "Plastics, plastic articles",
+              "isitright": false,
+              "checked": "",
+              "value": "Plastics, plastic articles",
+              "id": "2"
+            },
+            {
+              "answer_text": "Footwear",
+              "isitright": false,
+              "checked": "",
+              "value": "Footwear",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Paper, paper items",
+              "isitright": false,
+              "checked": "",
+              "value": "Paper, paper items",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        }
+      ],
+      "image": "./images/portugal.jpg",
+      "total": 0
+    },
+    {
+      "id": "3",
+      "country": "Germany",
+      "selected": false,
+      "passed": false,
+      "tests": [
+        {
+          "id": "0",
+          "question_text": "Which country is it?",
+          "name": "country",
+          "answers": [
+            {
+              "answer_text": "France",
+              "isitright": false,
+              "checked": "checked",
+              "value": "France",
+              "id": "0"
+            },
+            {
+              "answer_text": "Germany",
+              "isitright": true,
+              "checked": "",
+              "value": "Denmark",
+              "id": "1"
+            },
+            {
+              "answer_text": "Finland",
+              "isitright": false,
+              "checked": "",
+              "value": "Finland",
+              "id": "2"
+            },
+            {
+              "answer_text": "Georgia",
+              "isitright": false,
+              "checked": "",
+              "value": "Georgia",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Ireland",
+              "isitright": false,
+              "checked": "",
+              "value": "Norway",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "1",
+          "question_text": "Country population?",
+          "name": "population",
+
+          "answers": [
+            {
+              "answer_text": "31 mil",
+              "isitright": false,
+              "checked": "checked",
+              "value": "20 mil",
+              "id": "0"
+            },
+            {
+              "answer_text": "46.5 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "15 mil",
+              "id": "1"
+            },
+            {
+              "answer_text": "62 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "54 mil",
+              "id": "2"
+            },
+            {
+              "answer_text": "84 mil",
+              "isitright": true,
+              "checked": "",
+              "value": "35 mil",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "91 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "40 mil",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "2",
+          "question_text": "Capital of the country?",
+          "name": "capital",
+          "answers": [
+            {
+              "answer_text": "Munich",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Frankfurt",
+              "id": "0"
+            },
+            {
+              "answer_text": "Hamburg",
+              "isitright": false,
+              "checked": "",
+              "value": "Hamburg",
+              "id": "1"
+            },
+            {
+              "answer_text": "Berlin",
+              "isitright": true,
+              "checked": "",
+              "value": "Berlin",
+              "id": "2"
+            },
+            {
+              "answer_text": "Dresden",
+              "isitright": false,
+              "checked": "",
+              "value": "Dresden",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Copenhagen",
+              "isitright": false,
+              "checked": "",
+              "value": "Copenhagen",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "3",
+          "question_text": "What currency is used in this country?",
+          "name": "currency",
+          "answers": [
+            {
+              "answer_text": "ruble",
+              "isitright": false,
+              "checked": "checked",
+              "value": "ruble",
+              "id": "0"
+            },
+            {
+              "answer_text": "lira",
+              "isitright": false,
+              "checked": "",
+              "value": "lira",
+              "id": "1"
+            },
+            {
+              "answer_text": "franc",
+              "isitright": false,
+              "checked": "",
+              "value": "franc",
+              "id": "2"
+            },
+            {
+              "answer_text": "dollar",
+              "isitright": false,
+              "checked": "",
+              "value": "dollar",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "euro",
+              "isitright": true,
+              "checked": "",
+              "value": "euro",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "4",
+          "question_text": "Main export of this country?",
+          "name": "export",
+          "answers": [
+            {
+              "answer_text": "Aircraft, spacecraft",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Aircraft, spacecraft",
+              "id": "0"
+            },
+            {
+              "answer_text": "Articles of iron or steel",
+              "isitright": false,
+              "checked": "",
+              "value": "Articles of iron or steel",
+              "id": "1"
+            },
+            {
+              "answer_text": "Pharmaceuticals",
+              "isitright": false,
+              "checked": "",
+              "value": "Pharmaceuticals",
+              "id": "2"
+            },
+            {
+              "answer_text": "Vehicles",
+              "isitright": false,
+              "checked": "",
+              "value": "Vehicles",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Machinery including computers",
+              "isitright": true,
+              "checked": "",
+              "value": "Machinery including computers",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        }
+      ],
+      "image": "./images/germany.jpg",
+      "total": 0
+    },
+    {
+      "id": "4",
+      "country": "Turkey",
+      "selected": false,
+      "passed": false,
+      "tests": [
+        {
+          "id": "0",
+          "question_text": "Which country is it?",
+          "name": "country",
+          "answers": [
+            {
+              "answer_text": "Turkey",
+              "isitright": true,
+              "checked": "checked",
+              "value": "France",
+              "id": "0"
+            },
+            {
+              "answer_text": "Denmark",
+              "isitright": false,
+              "checked": "",
+              "value": "Denmark",
+              "id": "1"
+            },
+            {
+              "answer_text": "Finland",
+              "isitright": false,
+              "checked": "",
+              "value": "Finland",
+              "id": "2"
+            },
+            {
+              "answer_text": "Georgia",
+              "isitright": false,
+              "checked": "",
+              "value": "Georgia",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Norway",
+              "isitright": true,
+              "checked": "",
+              "value": "Norway",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "1",
+          "question_text": "Country population?",
+          "name": "population",
+
+          "answers": [
+            {
+              "answer_text": "120.5 mil",
+              "isitright": false,
+              "checked": "checked",
+              "value": "20 mil",
+              "id": "0"
+            },
+            {
+              "answer_text": "92 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "15 mil",
+              "id": "1"
+            },
+            {
+              "answer_text": "64.5 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "54 mil",
+              "id": "2"
+            },
+            {
+              "answer_text": "48 mil",
+              "isitright": false,
+              "checked": "",
+              "value": "35 mil",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "84.5 mil",
+              "isitright": true,
+              "checked": "",
+              "value": "40 mil",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "2",
+          "question_text": "Capital of the country?",
+          "name": "capital",
+          "answers": [
+            {
+              "answer_text": "Gaziantep",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Gaziantep",
+              "id": "0"
+            },
+            {
+              "answer_text": "Antalya",
+              "isitright": false,
+              "checked": "",
+              "value": "Antalya",
+              "id": "1"
+            },
+            {
+              "answer_text": "Izmir",
+              "isitright": false,
+              "checked": "",
+              "value": "Izmir",
+              "id": "2"
+            },
+            {
+              "answer_text": "Istanbul",
+              "isitright": true,
+              "checked": "",
+              "value": "Istanbul",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Ankara",
+              "isitright": false,
+              "checked": "",
+              "value": "Ankara",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "3",
+          "question_text": "What currency is used in this country?",
+          "name": "currency",
+          "answers": [
+            {
+              "answer_text": "dinar",
+              "isitright": false,
+              "checked": "checked",
+              "value": "dinar",
+              "id": "0"
+            },
+            {
+              "answer_text": "dollar",
+              "isitright": false,
+              "checked": "",
+              "value": "dollar",
+              "id": "1"
+            },
+            {
+              "answer_text": "lari",
+              "isitright": false,
+              "checked": "",
+              "value": "lari",
+              "id": "2"
+            },
+            {
+              "answer_text": "lira",
+              "isitright": true,
+              "checked": "",
+              "value": "lira",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "euro",
+              "isitright": false,
+              "checked": "",
+              "value": "euro",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        },
+        {
+          "id": "4",
+          "question_text": "Main export of this country?",
+          "name": "export",
+          "answers": [
+            {
+              "answer_text": "Gems, precious metals",
+              "isitright": false,
+              "checked": "checked",
+              "value": "Gems, precious metals",
+              "id": "0"
+            },
+            {
+              "answer_text": "Knit or crochet clothing, accessories",
+              "isitright": false,
+              "checked": "",
+              "value": "Knit or crochet clothing, accessories",
+              "id": "1"
+            },
+            {
+              "answer_text": "Vehicles",
+              "isitright": true,
+              "checked": "",
+              "value": "Vehicles",
+              "id": "2"
+            },
+            {
+              "answer_text": "Iron, stee",
+              "isitright": false,
+              "checked": "",
+              "value": "Iron, stee",
+              "id": "3"
+            },
+
+            {
+              "answer_text": "Machinery including computers",
+              "isitright": false,
+              "checked": "",
+              "value": "Machinery including computers",
+              "id": "4"
+            }
+          ],
+          "mark": false
+        }
+      ],
+      "image": "./images/turkey.jpg",
+      "total": 0
     }
   ],
   "allCountriesTotal": 0,

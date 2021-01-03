@@ -6,10 +6,12 @@
 }
 html {
   height: 100vh;
+  /* width: 100vw; */
 }
 body {
   margin: 0%;
   height: 100%;
+  width: 100vw;
   display: -webkit-flex;
   display: -webkit-flexbox;
   display: -ms-flexbox;
@@ -22,9 +24,30 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-
+button {
+  border: none;
+  color: #387341;
+  padding: 0.3rem 1rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 2px;
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.18);
+  
+}
+button:hover {
+  background-color: #5BA66E;
+  transition: 220ms all ease-in-out;
+}
+button:focus {
+  outline-style: solid;
+  outline-color: transparent;
+  box-shadow: 0 0 0 2px #CEF2D7;
+  transition: 1s all ease;
+}
 .Toolbar {
-  background: darkolivegreen;
+  background: #387341;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -37,7 +60,7 @@ body {
 }
 .brand-name {
   margin: 0%;
-  color: antiquewhite;
+  color: #05F240;
   font-weight: bold;
   font-size: 1.8rem;
 }
@@ -67,10 +90,11 @@ body {
   justify-content: space-between;
 }
 
-.main-game-piece {
+
+.Quiz {
   text-align: center;
   height: 100%;
-  width: 48%;
+  width: 38%;
 }
 
 .Quiz-container {
@@ -80,7 +104,7 @@ body {
   justify-content: space-between;
 }
 .Quiz-title {
-  background-color: darkolivegreen;
+  background-color: #387341;
 
   height: 10%;
   display: flex;
@@ -93,7 +117,7 @@ body {
   border-bottom: antiquewhite solid 2px;
 }
 .Quiz-tests {
-  background-color: darkolivegreen;
+  background-color: #387341;
 
   height: 76%;
   overflow: auto;
@@ -135,7 +159,7 @@ fieldset {
 }
 
 .Quiz-control {
-  background-color: #f4976c;
+  background-color: #387341;
   height: 10%;
   display: flex;
   justify-content: space-around;
@@ -144,14 +168,21 @@ fieldset {
 .Quiz-control-done {
   margin: 0%;
 }
+
 .Quiz-control-go {
   margin: 0%;
 }
 .Quiz-control-total {
-  color: darkolivegreen;
+  color: antiquewhite;
   margin: 0%;
 }
 .Quiz-control-total h2 {
   margin: 0%;
 }
+.Map {
+  text-align: center;
+  height: 100%;
+  width: 58%;
+}
+
 
