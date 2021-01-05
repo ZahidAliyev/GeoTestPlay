@@ -1,13 +1,16 @@
 * {
   box-sizing: border-box;
 }
+*[disabled] {
+  pointer-events: none !important;
+}
 ::-webkit-scrollbar {
   display: none;
-  -ms-overflow-style: none;
 }
 html {
   height: 100vh;
   /* width: 100vw; */
+  -ms-overflow-style: none;
 }
 body {
   margin: 0%;
@@ -180,4 +183,8 @@ fieldset {
   text-align: center;
   height: 100%;
   width: 58%;
+}
+
+@media screen and (max-width: 480px) {
+  
 }
