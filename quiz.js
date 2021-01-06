@@ -2,17 +2,23 @@ import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 
 const changeHeight = () => {
   if(window.innerWidth < 540) {
-    console.log(window.outerWidth);
-    console.log(window.outerHeight);
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
+    const html = document.querySelector('html');
+    console.log("available ", window.screen.availHeight)
+    console.log("outer ", window.outerWidth);
+    console.log("outer ", window.outerHeight);
+    console.log("inner ", window.innerWidth);
+    console.log("inner ", window.innerHeight);
+    console.log("client ", html.clientWidth);
+    console.log("client ", html.clientHeight);
     const root = document.querySelector(":root");
-    // const rootStyles = getComputedStyle(root);
-    // console.log(rootStyles.getPropertyValue('--page-height'));
+
     const browserWidth = window.outerWidth;
     const browserHeight = window.outerHeight;
-    root.style.setProperty('--page-height', `${window.innerHeight}px`);
+    const browsBar = window.screen.availHeight - browserHeight;
+    root.style.setProperty('--page-height', `${window.screen.availHeight - browsBar}px`);
     root.style.setProperty('--page-width', `${window.innerWidth}px`);
+    const rootStyles = getComputedStyle(root);
+    console.log(rootStyles.getPropertyValue('--page-height'));
 
 
     // const html = document.querySelector('html');
