@@ -1,5 +1,12 @@
 import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
-
+const html = document.querySelector('html');
+console.log("available ", window.screen.availHeight)
+// console.log("outer ", window.outerWidth);
+console.log("outer ", window.outerHeight);
+// console.log("inner ", window.innerWidth);
+console.log("inner ", window.innerHeight);
+// console.log("client ", html.clientWidth);
+console.log("client ", html.clientHeight);
 const changeHeight = () => {
   if(window.innerWidth < 540) {
     const html = document.querySelector('html');
@@ -14,7 +21,7 @@ const changeHeight = () => {
     
     const browserWidth = window.outerWidth;
     const browserHeight = window.outerHeight;
-    // root.style.setProperty('--page-height', `${window.innerHeight}px`);
+    root.style.setProperty('--page-height', `${window.outerHeight}px`);
     // root.style.setProperty('--page-width', `${window.screen.availWidth}px`);
     const rootStyles = getComputedStyle(root);
     console.log(rootStyles.getPropertyValue('--page-height'));
