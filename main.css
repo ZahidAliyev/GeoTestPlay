@@ -193,7 +193,7 @@ fieldset {
   html {
     height: 100vh;
 
-    height: var(--page-height);
+    height: 711px;
     /* width: var(--page-width); */
   }
 }
