@@ -28,7 +28,7 @@ const changeHeight = () => {
     
     const browserWidth = window.outerWidth;
     const browserHeight = window.outerHeight;
-    // root.style.setProperty('--page-height', `${window.outerHeight}px`);
+    root.style.setProperty('--page-height', `${window.innerHeight}px`);
     // root.style.setProperty('--page-width', `${window.screen.availWidth}px`);
     const rootStyles = getComputedStyle(root);
     console.log(rootStyles.getPropertyValue('--page-height'));
