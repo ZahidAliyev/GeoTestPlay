@@ -1,5 +1,6 @@
 import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 const html = document.querySelector('html');
+console.log("total", window.screen.height);
 console.log("available ", window.screen.availHeight)
 // console.log("outer ", window.outerWidth);
 console.log("outer ", window.outerHeight);

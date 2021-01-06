@@ -191,9 +191,10 @@ fieldset {
 
 @media screen and (max-width: 480px) {
   html {
-    /* height: var(--page-height); */
+    height: 100vh;
+
+    height: var(--page-height);
     /* width: var(--page-width); */
-    height: 567px;
   }
 }
 
