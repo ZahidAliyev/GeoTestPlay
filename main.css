@@ -8,11 +8,11 @@
   display: none;
 }
 :root {
-  --page-height: 100vh;
+  --page-height: 1vh;
   --page-width: 100%;
 }
 html {
-  height: var(--page-height);
+  height: 100vh;
   /* width: 100vw; */
   -ms-overflow-style: none;
 }
@@ -189,9 +189,10 @@ fieldset {
   width: 58%;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 400px) {
   html {
-    height: var(--page-height);
+    height: 100vh;
+    height: calc(var(--page-height, 1vh) * 100);
     /* width: var(--page-width); */
   }
 }

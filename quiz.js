@@ -13,7 +13,7 @@ import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 
 // const root = document.querySelector(":root");
 const changeHeight = () => {
-  if(window.innerWidth < 540) {
+  if(window.screen.availWidth < 400) {
     const html = document.querySelector('html');
     console.log("total", window.screen.height);
 
@@ -28,10 +28,11 @@ const changeHeight = () => {
     
     const browserWidth = window.outerWidth;
     const browserHeight = window.outerHeight;
-    root.style.setProperty('--page-height', `${window.innerHeight}px`);
+    root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
     // root.style.setProperty('--page-width', `${window.screen.availWidth}px`);
     const rootStyles = getComputedStyle(root);
     console.log(rootStyles.getPropertyValue('--page-height'));
+    console.log(html.offsetHeight);
     
   }
 }
