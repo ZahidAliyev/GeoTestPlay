@@ -33,7 +33,6 @@ const changeHeight = () => {
     const rootStyles = getComputedStyle(root);
     console.log(rootStyles.getPropertyValue('--page-height'));
     
-    console.log(document.getElementById("height").offsetHeight);
   }
 }
 changeHeight();
