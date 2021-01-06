@@ -1,5 +1,27 @@
 import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 
+const changeHeight = () => {
+  if(window.innerWidth < 540) {
+    console.log(window.outerWidth);
+    console.log(window.outerHeight);
+    console.log(window.innerWidth);
+    console.log(window.innerHeight);
+    const root = document.querySelector(":root");
+    // const rootStyles = getComputedStyle(root);
+    // console.log(rootStyles.getPropertyValue('--page-height'));
+    const browserWidth = window.outerWidth;
+    const browserHeight = window.outerHeight;
+    root.style.setProperty('--page-height', `${window.innerHeight}px`);
+    root.style.setProperty('--page-width', `${window.innerWidth}px`);
+
+
+    // const html = document.querySelector('html');
+    // html.style.height = `${browserHeight}px`;
+    // console.log(html.style.height)
+  }
+}
+changeHeight();
+
 // const doneButtn = document.querySelector(".Quiz-control-done > button");
 const quizControlDoneAndRetryDiv = document.querySelector(".Quiz-control-done");
 const doneButton = document.createElement("button");

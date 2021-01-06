@@ -7,8 +7,12 @@
 ::-webkit-scrollbar {
   display: none;
 }
+:root {
+  --page-height: 100vh;
+  --page-width: 100%;
+}
 html {
-  height: 100vh;
+  height: var(--page-height);
   /* width: 100vw; */
   -ms-overflow-style: none;
 }
@@ -186,5 +190,9 @@ fieldset {
 }
 
 @media screen and (max-width: 480px) {
-  
+  html {
+    height: var(--page-height);
+    width: var(--page-width);
+  }
 }
+
