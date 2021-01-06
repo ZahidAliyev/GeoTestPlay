@@ -33,10 +33,7 @@ const changeHeight = () => {
     const rootStyles = getComputedStyle(root);
     console.log(rootStyles.getPropertyValue('--page-height'));
     console.log(html.offsetHeight);
-    window.addEventListener('resize', () => {
-      // We execute the same script as before
-git       root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
-    });
+    
     
   }
 }
