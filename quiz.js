@@ -1,17 +1,5 @@
 import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
-// console.log("total", window.screen.height);
-// const html = document.querySelector('html');
 
-// console.log("available ", window.screen.availHeight)
-// // console.log("outer ", window.outerWidth);
-// console.log("outer ", window.outerHeight);
-// // console.log("inner ", window.innerWidth);
-// console.log("inner ", window.innerHeight);
-// // console.log("client ", html.clientWidth);
-// console.log("client ", html.clientHeight);
-// console.log(document.getElementById("height").offsetHeight);
-
-// const root = document.querySelector(":root");
 const changeHeight = () => {
   if(window.screen.availWidth < 400) {
     const html = document.querySelector('html');
@@ -33,9 +21,18 @@ const changeHeight = () => {
     const rootStyles = getComputedStyle(root);
     console.log(rootStyles.getPropertyValue('--page-height'));
     console.log(html.offsetHeight);
-    window.addEventListener('resize', ()=> {
-      root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
-    })
+    const debounce = (cb, wait) =>{
+      let timeOut;
+      return ()=> {
+        if(timeOut) {
+          clearTimeout(timeOut);
+        }
+        timeOut = setTimeout(cb, wait);
+      }
+    }
+    const mobileHeightFix = ()=> root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
+
+    window.addEventListener('resize', debounce(mobileHeightFix, 500));
     
   }
 }

@@ -8,7 +8,7 @@
   display: none;
 }
 :root {
-  --page-height: 1vh;
+  /* --page-height: 1vh; */
   --page-width: 100%;
 }
 html {
