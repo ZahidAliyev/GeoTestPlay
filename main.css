@@ -174,7 +174,7 @@ fieldset {
 @media screen and (max-width: 400px) {
   html {
     height: 100vh;
-    /* height: calc(var(--page-height, 1vh) * 100);     */
+    height: calc(var(--page-height, 1vh) * 100);    
   }
   .Game {
     height: 85%;
