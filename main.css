@@ -194,8 +194,7 @@ fieldset {
     height: 100vh;
     height: calc(var(--page-height, 1vh) * 100);
     /* width: var(--page-width); */
-    overflow: hidden;
-
+    
   }
 }
 

@@ -27,7 +27,6 @@ const changeHeight = () => {
         if(timeOut) {
           clearTimeout(timeOut);
         }
-        console.log("as")
         timeOut = setTimeout(cb, wait);
       }
     }
