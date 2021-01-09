@@ -176,8 +176,13 @@ fieldset {
     height: 100vh;
     height: calc(var(--page-height, 1vh) * 100);    
   }
+  
+  .Toolbar {
+    justify-content: center;
+    height: 8%;
+  }
   .Game {
-    height: 85%;
+    height: 90%;
     width: 99%;
     display: flex;
     flex-direction: column;
@@ -187,11 +192,30 @@ fieldset {
   .Quiz {
     text-align: center;
     width: 100%;
+    height: 49%;
+
     order: 2;
+  }
+  .Quiz-title {
+    display: none;
+  }
+  .Quiz-tests {
+    background-color: #387341;
+  
+    height: 84%;
+    overflow: auto;
+    color: antiquewhite;
+  }
+  .Quiz-control {
+    background-color: #387341;
+    height: 15%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
   .Map {
     width: 100%;
-
+    height: 50%;
   }
 }
 

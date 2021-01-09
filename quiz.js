@@ -21,18 +21,18 @@ const changeHeight = () => {
     const rootStyles = getComputedStyle(root);
     console.log(rootStyles.getPropertyValue('--page-height'));
     console.log(html.offsetHeight);
-    const debounce = (cb, wait) =>{
-      let timeOut;
-      return ()=> {
-        if(timeOut) {
-          clearTimeout(timeOut);
-        }
-        timeOut = setTimeout(cb, wait);
-      }
-    }
-    const mobileHeightFix = ()=> root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
+    // const debounce = (cb, wait) =>{
+    //   let timeOut;
+    //   return ()=> {
+    //     if(timeOut) {
+    //       clearTimeout(timeOut);
+    //     }
+    //     timeOut = setTimeout(cb, wait);
+    //   }
+    // }
+    // const mobileHeightFix = ()=> root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
 
-    window.addEventListener('resize', debounce(mobileHeightFix, 500));
+    // window.addEventListener('resize', debounce(mobileHeightFix, 500));
     
   }
 }
