@@ -137,6 +137,7 @@ fieldset {
 }
 .Quiz-tests_test-answer {
   padding: 0.2rem;
+  text-align: justify;
 }
 .Quiz-tests_test-mark {
   display: flex;

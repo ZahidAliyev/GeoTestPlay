@@ -3,8 +3,9 @@ import { drawMap, clearMap, drawTotalRightAnswers, canvas } from "./map.js";
 const changeHeight = () => {
   if (window.screen.availWidth < 400) {
     console.log(canvas);
-    canvas.width = document.querySelector(".Map").offsetWidth - document.querySelector(".Map").offsetWidth/100;
-    canvas.height = document.querySelector(".Map").offsetHeight - document.querySelector(".Map").offsetHeight/100;
+
+    canvas.height = document.querySelector(".Map").offsetHeight - (document.querySelector(".Map").offsetHeight/100 * 3);
+    console.log(canvas);
     const html = document.querySelector("html");
     console.log("total", window.screen.height);
 
