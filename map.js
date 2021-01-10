@@ -1,6 +1,6 @@
 // CAnvas
 
-const canvas = document.querySelector("#map");
+export const canvas = document.querySelector("#map");
 
 const ctx = canvas.getContext("2d");
 

@@ -1,11 +1,14 @@
-import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
+import { drawMap, clearMap, drawTotalRightAnswers, canvas } from "./map.js";
 
 const changeHeight = () => {
-  if(window.screen.availWidth < 400) {
-    const html = document.querySelector('html');
+  if (window.screen.availWidth < 400) {
+    console.log(canvas);
+    canvas.width = document.querySelector(".Map").offsetWidth - document.querySelector(".Map").offsetWidth/100;
+    canvas.height = document.querySelector(".Map").offsetHeight - document.querySelector(".Map").offsetHeight/100;
+    const html = document.querySelector("html");
     console.log("total", window.screen.height);
 
-    console.log("available ", window.screen.availHeight)
+    console.log("available ", window.screen.availHeight);
     // console.log("outer ", window.outerWidth);
     console.log("outer ", window.outerHeight);
     // console.log("inner ", window.innerWidth);
@@ -13,13 +16,13 @@ const changeHeight = () => {
     // console.log("client ", html.clientWidth);
     console.log("client ", html.clientHeight);
     const root = document.querySelector(":root");
-    
+
     const browserWidth = window.outerWidth;
     const browserHeight = window.outerHeight;
-    root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
+    root.style.setProperty("--page-height", `${window.innerHeight / 100}px`);
     // root.style.setProperty('--page-width', `${window.screen.availWidth}px`);
     const rootStyles = getComputedStyle(root);
-    console.log(rootStyles.getPropertyValue('--page-height'));
+    console.log(rootStyles.getPropertyValue("--page-height"));
     console.log(html.offsetHeight);
     // const debounce = (cb, wait) =>{
     //   let timeOut;
@@ -33,9 +36,8 @@ const changeHeight = () => {
     // const mobileHeightFix = ()=> root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
 
     // window.addEventListener('resize', debounce(mobileHeightFix, 500));
-    
   }
-}
+};
 changeHeight();
 
 // const doneButtn = document.querySelector(".Quiz-control-done > button");
@@ -171,7 +173,7 @@ async function getQuizDataandStartGame(url) {
   const data = await res.json();
 
   const dataCopy = Object.assign({}, data);
-  
+
   try {
     //DONT USE EVENT LISTENER ON BUTTONS. we shouldn’t use addEventListener too often since it keeps adding new event listeners to a DOM object without discarding the old ones.
     console.log("try");
@@ -188,7 +190,6 @@ async function getQuizDataandStartGame(url) {
     //   console.log("retry click");
     //   // getQuizDataandStartGame("./quiz.json");
 
-      
     // });
     doneButton.onclick = () => done(dataCopy);
     retryButton.onclick = () => getQuizDataandStartGame("./quiz.json");
