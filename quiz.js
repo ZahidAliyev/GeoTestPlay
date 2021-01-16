@@ -1,34 +1,37 @@
 import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 
-// const changeCanvasHeight = () => {
-//   const max_width_for_mobiles = 600;
-//   const deviceWidth = window.screen.availWidth;
-//   const mapElementHeight = document.querySelector(".Map").offsetHeight;
-//   if (deviceWidth < max_width_for_mobiles) {
-//     canvas.height =
-//     mapElementHeight -
-//       (mapElementHeight / 100) * 6;
-//     const rootElelemt = document.querySelector(":root");
-//     rootElelemt.style.setProperty("--page-height", `${window.innerHeight / 100}px`);
-//   }
-// };
-// changeCanvasHeight();
+const changePageHeight = (max_width_for_device, deviceWidth) => {
+    if (deviceWidth < max_width_for_device) {
 
-const quizControlDoneAndRetryDivElement = document.querySelector(".Quiz-control-done");
+      const rootElelemt = document.querySelector(":root");
+      rootElelemt.style.setProperty("--page-height", `${window.innerHeight / 100}px`);
+    }
+};
+changePageHeight(600, window.screen.availWidth);
+
+const quizControlDoneAndRetryDivElement = document.querySelector(
+  ".Quiz-control-done"
+);
 const doneButton = document.createElement("button");
 doneButton.setAttribute("class", "button");
 doneButton.textContent = "Done";
 const retryButton = document.createElement("button");
 retryButton.setAttribute("class", "button");
 retryButton.textContent = "Retry";
-const QuizControlTotalElement = document.querySelector(".Quiz-control-total > h2");
-const quizControlGoFurtherElement = document.querySelector(".Quiz-control-go > button");
+const QuizControlTotalElement = document.querySelector(
+  ".Quiz-control-total > h2"
+);
+const quizControlGoFurtherElement = document.querySelector(
+  ".Quiz-control-go > button"
+);
 
 const randomCountrySelect = (data) => {
   const notSelectedCountriesYet = data.countries.filter((country) => {
     return country.selected === false;
   });
-  const random_index = Math.floor(Math.random() * notSelectedCountriesYet.length);
+  const random_index = Math.floor(
+    Math.random() * notSelectedCountriesYet.length
+  );
 
   if (notSelectedCountriesYet.length === 0) {
     return undefined;
@@ -42,8 +45,7 @@ const doneOrRetryQuiz = (data) => {
   const selectedCountry = data.countries.filter((country) => {
     return country.selected === true && !country.passed;
   })[0];
-  const mark = document.querySelectorAll(".Quiz-tests_test-mark > p");
-  const testElement = document.querySelectorAll('.Quiz-tests_test');
+  const testElement = document.querySelectorAll(".Quiz-tests_test");
   selectedCountry.tests.forEach((test, testindex) => {
     data.testsQuantity += 1;
     const inputs = document.getElementsByName(`${test.name}`);
@@ -52,15 +54,10 @@ const doneOrRetryQuiz = (data) => {
         test.mark = true;
         selectedCountry.total += 1;
         data.allCountriesTotal += 1;
-        mark[testindex].innerHTML = "True";
         testElement[testindex].style.backgroundColor = "#05f240";
-        console.log("true");
         return false;
       } else {
-        mark[testindex].innerHTML = "False";
         testElement[testindex].style.backgroundColor = "#f70330";
-
-        console.log("false");
         return true;
       }
     });
@@ -97,9 +94,6 @@ function StartQuiz(quizDataCopy) {
               </legend>
   
             </fieldset>
-            <div class="Quiz-tests_test-mark">
-              <p></p>
-            </div>
             </div>
             `;
       // only after adding html test div with dieldset to form, selecting all fieldset elements

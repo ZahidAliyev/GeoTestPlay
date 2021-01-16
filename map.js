@@ -38,16 +38,3 @@ export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) => {
     canvasContainerHeight * 0.6
   );
 };
-// export const changeCanvasHeight = (deviceWidth, max_width_for_mobiles) => {
-//   const max_width_for_mobiles = 600;
-//   const deviceWidth = window.screen.availWidth;
-//   const mapElementHeight = document.querySelector(".Map").offsetHeight;
-//   if (deviceWidth < max_width_for_mobiles) {
-//     canvas.height = mapElementHeight - (mapElementHeight / 100) * 6;
-//     const rootElelemt = document.querySelector(":root");
-//     rootElelemt.style.setProperty(
-//       "--page-height",
-//       `${window.innerHeight / 100}px`
-//     );
-//   }
-// };
