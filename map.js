@@ -33,8 +33,8 @@ export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) => {
   ctx.font = "30px serif";
   ctx.fillText(
     `Total Righ Answers: ${allCountriesTotal} of ${testsQuantity}`,
-    canvas.width * 0.2,
-    canvasContainerWidth / 2,
-    canvasContainerHeight * 0.6
+    canvasContainerWidth * 0.3,
+    canvasContainerHeight * 0.5,
+    canvas.width * 0.4,
   );
 };

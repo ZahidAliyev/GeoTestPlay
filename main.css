@@ -92,6 +92,7 @@ button:focus {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .Quiz-title {
   background-color: #387341;
 
@@ -111,6 +112,15 @@ button:focus {
   height: 76%;
   overflow: auto;
   color: antiquewhite;
+}
+#quiz-form {
+  height: 100%;
+}
+.quiz-test-finished {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .Quiz-tests_test {
   border-bottom: antiquewhite solid 1px;

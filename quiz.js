@@ -116,7 +116,7 @@ function StartQuiz(quizDataCopy) {
     });
     //If TEST FINISHED
   } else {
-    form.innerHTML = `<div><h2>Test finished</h2></div>`;
+    form.innerHTML = `<div class="quiz-test-finished"><h2>Test finished</h2></div>`;
     clearMap();
 
     drawTotalRightAnswers(
