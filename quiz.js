@@ -1,118 +1,88 @@
-import { drawMap, clearMap, drawTotalRightAnswers, canvas } from "./map.js";
+import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
 
-const changeHeight = () => {
-  if (window.screen.availWidth < 640) {
-    console.log(canvas);
+// const changeCanvasHeight = () => {
+//   const max_width_for_mobiles = 600;
+//   const deviceWidth = window.screen.availWidth;
+//   const mapElementHeight = document.querySelector(".Map").offsetHeight;
+//   if (deviceWidth < max_width_for_mobiles) {
+//     canvas.height =
+//     mapElementHeight -
+//       (mapElementHeight / 100) * 6;
+//     const rootElelemt = document.querySelector(":root");
+//     rootElelemt.style.setProperty("--page-height", `${window.innerHeight / 100}px`);
+//   }
+// };
+// changeCanvasHeight();
 
-    canvas.height = document.querySelector(".Map").offsetHeight - (document.querySelector(".Map").offsetHeight/100 * 6);
-    console.log(canvas);
-    const html = document.querySelector("html");
-    console.log("total", window.screen.height);
-
-    console.log("available ", window.screen.availHeight);
-    // console.log("outer ", window.outerWidth);
-    console.log("outer ", window.outerHeight);
-    // console.log("inner ", window.innerWidth);
-    console.log("inner ", window.innerHeight);
-    // console.log("client ", html.clientWidth);
-    console.log("client ", html.clientHeight);
-    const root = document.querySelector(":root");
-
-    const browserWidth = window.outerWidth;
-    const browserHeight = window.outerHeight;
-    root.style.setProperty("--page-height", `${window.innerHeight / 100}px`);
-    // root.style.setProperty('--page-width', `${window.screen.availWidth}px`);
-    const rootStyles = getComputedStyle(root);
-    console.log(rootStyles.getPropertyValue("--page-height"));
-    console.log(html.offsetHeight);
-    // const debounce = (cb, wait) =>{
-    //   let timeOut;
-    //   return ()=> {
-    //     if(timeOut) {
-    //       clearTimeout(timeOut);
-    //     }
-    //     timeOut = setTimeout(cb, wait);
-    //   }
-    // }
-    // const mobileHeightFix = ()=> root.style.setProperty('--page-height', `${window.innerHeight/100}px`);
-
-    // window.addEventListener('resize', debounce(mobileHeightFix, 500));
-  }
-};
-changeHeight();
-
-// const doneButtn = document.querySelector(".Quiz-control-done > button");
-const quizControlDoneAndRetryDiv = document.querySelector(".Quiz-control-done");
+const quizControlDoneAndRetryDivElement = document.querySelector(".Quiz-control-done");
 const doneButton = document.createElement("button");
 doneButton.setAttribute("class", "button");
 doneButton.textContent = "Done";
 const retryButton = document.createElement("button");
 retryButton.setAttribute("class", "button");
 retryButton.textContent = "Retry";
-const totalUi = document.querySelector(".Quiz-control-total > h2");
-const go = document.querySelector(".Quiz-control-go > button");
+const QuizControlTotalElement = document.querySelector(".Quiz-control-total > h2");
+const quizControlGoFurtherElement = document.querySelector(".Quiz-control-go > button");
 
-const countrySelect = (data) => {
-  const countriesForRandomIndex = data.countries.filter((country) => {
+const randomCountrySelect = (data) => {
+  const notSelectedCountriesYet = data.countries.filter((country) => {
     return country.selected === false;
   });
-  const index = Math.floor(
-    Math.random() * Math.floor(countriesForRandomIndex.length)
-  );
-  if (countriesForRandomIndex.length === 0) {
+  const random_index = Math.floor(Math.random() * notSelectedCountriesYet.length);
+
+  if (notSelectedCountriesYet.length === 0) {
     return undefined;
   } else {
-    countriesForRandomIndex[index].selected = true;
-    return countriesForRandomIndex[index];
+    notSelectedCountriesYet[random_index].selected = true;
+    return notSelectedCountriesYet[random_index];
   }
 };
 // Done button function
-const done = (data) => {
-  console.log("DONE");
-
+const doneOrRetryQuiz = (data) => {
   const selectedCountry = data.countries.filter((country) => {
     return country.selected === true && !country.passed;
   })[0];
   const mark = document.querySelectorAll(".Quiz-tests_test-mark > p");
-
+  const testElement = document.querySelectorAll('.Quiz-tests_test');
   selectedCountry.tests.forEach((test, testindex) => {
     data.testsQuantity += 1;
     const inputs = document.getElementsByName(`${test.name}`);
-    test.answers.forEach((answer, index) => {
-      if (inputs[index].checked && answer.isitright) {
+    test.answers.every((answer, answer_index) => {
+      if (inputs[answer_index].checked && answer.isitright) {
         test.mark = true;
         selectedCountry.total += 1;
         data.allCountriesTotal += 1;
         mark[testindex].innerHTML = "True";
+        testElement[testindex].style.backgroundColor = "#05f240";
+        console.log("true");
+        return false;
       } else {
-        if (!test.mark) {
-          mark[testindex].innerHTML = "False";
-        }
+        mark[testindex].innerHTML = "False";
+        testElement[testindex].style.backgroundColor = "#f70330";
+
+        console.log("false");
+        return true;
       }
     });
   });
   selectedCountry.passed = true;
-  go.disabled = false;
-  totalUi.innerHTML = `Total: ${selectedCountry.total}`;
+  quizControlGoFurtherElement.disabled = false;
+  QuizControlTotalElement.innerHTML = `Total: ${selectedCountry.total}`;
   doneButton.disabled = true;
 };
 /////////START or Continue Quiz with Copied Data
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
-  quizControlDoneAndRetryDiv.innerHTML = "";
-  quizControlDoneAndRetryDiv.appendChild(doneButton);
+  quizControlDoneAndRetryDivElement.innerHTML = "";
+  quizControlDoneAndRetryDivElement.appendChild(doneButton);
   doneButton.disabled = false;
-  go.disabled = true;
-  console.log("StartQuiz");
-  const selectedCountry = countrySelect(quizDataCopy);
-  // const selectedCountry = quizDataCopy.countries.filter((country) => {
-  //   return country.selected === true && !country.passed;
-  // })[0];
+  quizControlGoFurtherElement.disabled = true;
+  const selectedCountry = randomCountrySelect(quizDataCopy);
   const form = document.querySelector("#quiz-form");
 
   if (selectedCountry != undefined) {
     drawMap(selectedCountry);
-    totalUi.innerHTML = `Total: ${selectedCountry.total}`;
+    QuizControlTotalElement.innerHTML = `Total: ${selectedCountry.total}`;
 
     form.innerHTML = "";
     // Looping trough array of tests for given country to make html and put quizDataCopy into html
@@ -159,15 +129,14 @@ function StartQuiz(quizDataCopy) {
       quizDataCopy.testsQuantity,
       quizDataCopy.allCountriesTotal
     );
-    go.disabled = true;
-    quizControlDoneAndRetryDiv.innerHTML = "";
+    quizControlGoFurtherElement.disabled = true;
+    quizControlDoneAndRetryDivElement.innerHTML = "";
 
-    quizControlDoneAndRetryDiv.appendChild(retryButton);
+    quizControlDoneAndRetryDivElement.appendChild(retryButton);
   }
 }
 
-async function getQuizDataandStartGame(url) {
-  console.log("getQuizandStart");
+async function getQuizDataAndStartGame(url) {
   //Fething data asynchroniously with asynch await
   const res = await fetch(url);
   //Converting it to json format
@@ -177,7 +146,6 @@ async function getQuizDataandStartGame(url) {
 
   try {
     //DONT USE EVENT LISTENER ON BUTTONS. we shouldn’t use addEventListener too often since it keeps adding new event listeners to a DOM object without discarding the old ones.
-    console.log("try");
     StartQuiz(dataCopy);
     // doneButton.addEventListener("click", (e) => {
     //   e.stopPropagation();
@@ -189,12 +157,12 @@ async function getQuizDataandStartGame(url) {
     // retryButton.addEventListener("click", (e) => {
     //   e.stopPropagation();
     //   console.log("retry click");
-    //   // getQuizDataandStartGame("./quiz.json");
+    //   // getQuizDataAndStartGame("./quiz.json");
 
     // });
-    doneButton.onclick = () => done(dataCopy);
-    retryButton.onclick = () => getQuizDataandStartGame("./quiz.json");
-    go.onclick = () => StartQuiz(dataCopy);
+    doneButton.onclick = () => doneOrRetryQuiz(dataCopy);
+    retryButton.onclick = () => getQuizDataAndStartGame("./quiz.json");
+    quizControlGoFurtherElement.onclick = () => StartQuiz(dataCopy);
     // go.addEventListener("click", (e) => {
     //   e.stopPropagation();
 
@@ -205,4 +173,4 @@ async function getQuizDataandStartGame(url) {
     console.log("err", err);
   }
 }
-getQuizDataandStartGame("./quiz.json");
+getQuizDataAndStartGame("./quiz.json");

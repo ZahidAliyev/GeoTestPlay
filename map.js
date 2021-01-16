@@ -1,11 +1,12 @@
 // CAnvas
 
-export const canvas = document.querySelector("#map");
+const canvas = document.querySelector("#map");
 
 const ctx = canvas.getContext("2d");
-
-canvas.width = document.querySelector(".Map").offsetWidth;
-canvas.height = document.querySelector(".Map").offsetHeight;
+const canvasContainerWidth = document.querySelector(".Map").offsetWidth;
+const canvasContainerHeight = document.querySelector(".Map").offsetHeight;
+canvas.width = canvasContainerWidth;
+canvas.height = canvasContainerHeight;
 
 export const drawMap = (country) => {
   const image = new Image();
@@ -19,17 +20,34 @@ export const drawMap = (country) => {
       image.height,
       0,
       0,
-      canvas.width,
-      canvas.height
+      canvasContainerWidth,
+      canvasContainerHeight
     );
   };
 };
 
-export const clearMap = () => ctx.clearRect(0, 0, canvas.width, canvas.height);
+export const clearMap = () =>
+  ctx.clearRect(0, 0, canvasContainerWidth, canvasContainerHeight);
 
-export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) =>  {
-  ctx.font = '30px serif';
-  // ctx.textAlign = 'center';
-  ctx.fillText(`Total Righ Answers: ${allCountriesTotal} of ${testsQuantity}`, canvas.width*0.2, canvas.height/2, canvas.width*0.6);
-  
-}
+export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) => {
+  ctx.font = "30px serif";
+  ctx.fillText(
+    `Total Righ Answers: ${allCountriesTotal} of ${testsQuantity}`,
+    canvas.width * 0.2,
+    canvasContainerWidth / 2,
+    canvasContainerHeight * 0.6
+  );
+};
+// export const changeCanvasHeight = (deviceWidth, max_width_for_mobiles) => {
+//   const max_width_for_mobiles = 600;
+//   const deviceWidth = window.screen.availWidth;
+//   const mapElementHeight = document.querySelector(".Map").offsetHeight;
+//   if (deviceWidth < max_width_for_mobiles) {
+//     canvas.height = mapElementHeight - (mapElementHeight / 100) * 6;
+//     const rootElelemt = document.querySelector(":root");
+//     rootElelemt.style.setProperty(
+//       "--page-height",
+//       `${window.innerHeight / 100}px`
+//     );
+//   }
+// };
