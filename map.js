@@ -35,6 +35,9 @@ export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) => {
     `Total Righ Answers: ${allCountriesTotal} of ${testsQuantity}`,
     canvasContainerWidth * 0.3,
     canvasContainerHeight * 0.5,
-    canvas.width * 0.4,
+    canvasContainerWidth * 0.4,
   );
 };
+export const changeCanvasHeight = (percentOfFullHeight) => {
+  canvas.height *= percentOfFullHeight;
+}

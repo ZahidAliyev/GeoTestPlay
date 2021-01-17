@@ -1,8 +1,8 @@
-import { drawMap, clearMap, drawTotalRightAnswers } from "./map.js";
+import { drawMap, clearMap, drawTotalRightAnswers, changeCanvasHeight } from "./map.js";
 
 const changePageHeight = (max_width_for_device, deviceWidth) => {
     if (deviceWidth < max_width_for_device) {
-
+      changeCanvasHeight(0.94);
       const rootElelemt = document.querySelector(":root");
       rootElelemt.style.setProperty("--page-height", `${window.innerHeight / 100}px`);
     }
