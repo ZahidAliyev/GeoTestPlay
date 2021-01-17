@@ -56,23 +56,23 @@ const randomCountrySelect = (data) => {
   }
 };
 // Done button function
-const doneOrRetryQuiz = (data) => {
+const checkAnswers = (data) => {
   const selectedCountry = data.countries.filter((country) => {
     return country.selected === true && !country.passed;
   })[0];
-  const testElement = document.querySelectorAll(".Quiz-tests_test");
+  const TEST_ELEMENT = document.querySelectorAll(".Quiz-tests_test");
   selectedCountry.tests.forEach((test, testindex) => {
-    data.testsQuantity += 1;
-    const inputs = document.getElementsByName(`${test.name}`);
+    data.totalTestsQuantity += 1;
+    const INPUTS_ARRAY_BY_NAME = document.getElementsByName(`${test.name}`);
     test.answers.every((answer, answer_index) => {
-      if (inputs[answer_index].checked && answer.isitright) {
+      if (INPUTS_ARRAY_BY_NAME[answer_index].checked && answer.isitright) {
         test.mark = true;
         selectedCountry.total += 1;
-        data.allCountriesTotal += 1;
-        testElement[testindex].style.backgroundColor = "#05f240";
+        data.totalRightAnswers += 1;
+        TEST_ELEMENT[testindex].style.backgroundColor = "#05f240";
         return false;
       } else {
-        testElement[testindex].style.backgroundColor = "#f70330";
+        TEST_ELEMENT[testindex].style.backgroundColor = "#f70330";
         return true;
       }
     });
@@ -134,8 +134,8 @@ function StartQuiz(quizDataCopy) {
     clearMap();
 
     drawTotalRightAnswers(
-      quizDataCopy.testsQuantity,
-      quizDataCopy.allCountriesTotal
+      quizDataCopy.totalTestsQuantity,
+      quizDataCopy.totalRightAnswers
     );
     quizControlGoFurtherElement.disabled = true;
     quizControlDoneAndRetryDivElement.innerHTML = "";
@@ -170,7 +170,7 @@ async function getQuizDataAndStartGame(url) {
     //   // getQuizDataAndStartGame("./quiz.json");
 
     // });
-    doneButton.onclick = () => doneOrRetryQuiz(dataCopy);
+    doneButton.onclick = () => checkAnswers(dataCopy);
     retryButton.onclick = () => getQuizDataAndStartGame("./quiz.json");
     quizControlGoFurtherElement.onclick = () => StartQuiz(dataCopy);
     // go.addEventListener("click", (e) => {

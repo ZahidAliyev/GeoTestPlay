@@ -1156,6 +1156,6 @@
       "total": 0
     }
   ],
-  "allCountriesTotal": 0,
-  "testsQuantity": 0
+  "totalRightAnswers": 0,
+  "totalTestsQuantity": 0
 }
