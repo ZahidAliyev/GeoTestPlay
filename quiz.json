@@ -939,7 +939,7 @@
               "answer_text": "Turkey",
               "isitright": true,
               "checked": "checked",
-              "value": "France",
+              "value": "Turkey",
               "id": "0"
             },
             {
@@ -966,7 +966,7 @@
 
             {
               "answer_text": "Norway",
-              "isitright": true,
+              "isitright": false,
               "checked": "",
               "value": "Norway",
               "id": "4"

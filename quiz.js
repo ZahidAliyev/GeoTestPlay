@@ -55,6 +55,10 @@ const randomCountrySelect = (data) => {
     return notSelectedCountriesYet[random_index];
   }
 };
+const changeElementsColor = (element, color) => {
+  element.style.backgroundColor = color;
+
+}
 // Done button function
 const checkAnswers = (data) => {
   const selectedCountry = data.countries.filter((country) => {
@@ -69,17 +73,18 @@ const checkAnswers = (data) => {
         test.mark = true;
         selectedCountry.total += 1;
         data.totalRightAnswers += 1;
-        TEST_ELEMENT[testindex].style.backgroundColor = "#05f240";
+        changeElementsColor(TEST_ELEMENT[testindex], "#05f240");
         return false;
       } else {
-        TEST_ELEMENT[testindex].style.backgroundColor = "#f70330";
+        changeElementsColor(TEST_ELEMENT[testindex], "#f70330");
+
         return true;
       }
     });
   });
   selectedCountry.passed = true;
   quizControlGoFurtherElement.disabled = false;
-  QuizControlTotalElement.innerHTML = `Total: ${selectedCountry.total}`;
+  QuizControlTotalElement.textContent = `Total: ${selectedCountry.total}`;
   doneButton.disabled = true;
 };
 /////////START or Continue Quiz with Copied Data
