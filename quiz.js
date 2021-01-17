@@ -1,23 +1,38 @@
-import { drawMap, clearMap, drawTotalRightAnswers, changeCanvasHeight } from "./map.js";
+import {
+  drawMap,
+  clearMap,
+  drawTotalRightAnswers,
+  changeCanvasHeight,
+} from "./map.js";
 
 const changePageHeight = (max_width_for_device, deviceWidth) => {
-    if (deviceWidth < max_width_for_device) {
-      changeCanvasHeight(0.94);
-      const rootElelemt = document.querySelector(":root");
-      rootElelemt.style.setProperty("--page-height", `${window.innerHeight / 100}px`);
-    }
+  if (deviceWidth < max_width_for_device) {
+    changeCanvasHeight(0.94);
+    const rootElelemt = document.querySelector(":root");
+    rootElelemt.style.setProperty(
+      "--page-height",
+      `${window.innerHeight / 100}px`
+    );
+  }
 };
-changePageHeight(600, window.screen.availWidth);
-
+const createHtmlElement = (tag, id = 0, className = 0, text = 0) => {
+  let elementsName = createHtmlElement.name;
+  elementsName = document.createElement(tag);
+  if (className) {
+    elementsName.setAttribute("class", className);
+  } else {
+    elementsName.setAttribute("id", id);
+  }
+  elementsName.textContent = text;
+  return elementsName;
+};
 const quizControlDoneAndRetryDivElement = document.querySelector(
   ".Quiz-control-done"
 );
-const doneButton = document.createElement("button");
-doneButton.setAttribute("class", "button");
-doneButton.textContent = "Done";
-const retryButton = document.createElement("button");
-retryButton.setAttribute("class", "button");
-retryButton.textContent = "Retry";
+const doneButton = createHtmlElement("button", null, "button", "Done");
+
+const retryButton = createHtmlElement("button", null, "button", "Retry");
+
 const QuizControlTotalElement = document.querySelector(
   ".Quiz-control-total > h2"
 );
@@ -99,8 +114,7 @@ function StartQuiz(quizDataCopy) {
       // only after adding html test div with dieldset to form, selecting all fieldset elements
       const fieldset = document.querySelectorAll(".Quiz-tests_test-question");
       // creating div for adding all radio inputs in it
-      const options = document.createElement("div");
-      options.setAttribute("class", "Quiz-tests_test-answers");
+      const options = createHtmlElement("div", null, "Quiz-tests_test-answers", null);
       // looping through each answer in answers data from test to add radio inputs HTML to options and insert answer text in each
       test.answers.forEach((answer) => {
         options.innerHTML += `
@@ -140,6 +154,8 @@ async function getQuizDataAndStartGame(url) {
 
   try {
     //DONT USE EVENT LISTENER ON BUTTONS. we shouldn’t use addEventListener too often since it keeps adding new event listeners to a DOM object without discarding the old ones.
+    changePageHeight(600, window.screen.availWidth);
+
     StartQuiz(dataCopy);
     // doneButton.addEventListener("click", (e) => {
     //   e.stopPropagation();
