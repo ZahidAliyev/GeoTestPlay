@@ -4,7 +4,7 @@ import {
   drawTotalRightAnswers,
   changeCanvasHeight,
 } from "./map.js";
-
+const time0 = performance.now();
 const changePageHeight = (max_width_for_device, deviceWidth) => {
   if (deviceWidth < max_width_for_device) {
     changeCanvasHeight(0.94);
@@ -20,7 +20,8 @@ const createHtmlElement = (tag, id = 0, className = 0, text = 0) => {
   elementsName = document.createElement(tag);
   if (className) {
     elementsName.setAttribute("class", className);
-  } else {
+  } 
+  if (id) {
     elementsName.setAttribute("id", id);
   }
   elementsName.textContent = text;
@@ -39,7 +40,6 @@ const QuizControlTotalElement = document.querySelector(
 const quizControlGoFurtherElement = document.querySelector(
   ".Quiz-control-go > button"
 );
-
 const randomCountrySelect = (data) => {
   const notSelectedCountriesYet = data.countries.filter((country) => {
     return country.selected === false;
@@ -55,6 +55,7 @@ const randomCountrySelect = (data) => {
     return notSelectedCountriesYet[random_index];
   }
 };
+
 const changeElementsColor = (element, color) => {
   element.style.backgroundColor = color;
 
@@ -90,8 +91,14 @@ const checkAnswers = (data) => {
 /////////START or Continue Quiz with Copied Data
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
-  quizControlDoneAndRetryDivElement.innerHTML = "";
-  quizControlDoneAndRetryDivElement.appendChild(doneButton);
+
+  if(retryButton !== undefined) {
+    quizControlDoneAndRetryDivElement.innerHTML = "";
+    quizControlDoneAndRetryDivElement.appendChild(doneButton);
+  } else {
+    quizControlDoneAndRetryDivElement.appendChild(doneButton);
+
+  }
   doneButton.disabled = false;
   quizControlGoFurtherElement.disabled = true;
   const selectedCountry = randomCountrySelect(quizDataCopy);
@@ -99,12 +106,11 @@ function StartQuiz(quizDataCopy) {
 
   if (selectedCountry != undefined) {
     drawMap(selectedCountry);
-    QuizControlTotalElement.innerHTML = `Total: ${selectedCountry.total}`;
+    QuizControlTotalElement.textContent = `Total: ${selectedCountry.total}`;
 
     form.innerHTML = "";
     // Looping trough array of tests for given country to make html and put quizDataCopy into html
     selectedCountry.tests.forEach((test, testIndex) => {
-      // getting dom form element to put quizDataCopy in it
 
       // adding test container for each test in country tests and text quizDataCopy as a question
       form.innerHTML += `<div class="Quiz-tests_test">
@@ -188,4 +194,6 @@ async function getQuizDataAndStartGame(url) {
     console.log("err", err);
   }
 }
+const time1 = performance.now();
+console.log(time0, time1);
 getQuizDataAndStartGame("./quiz.json");
