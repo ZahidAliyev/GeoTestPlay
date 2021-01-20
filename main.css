@@ -179,6 +179,10 @@ fieldset {
 .Map {
   height: 100%;
   width: 58%;
+  position: relative;
+}
+#canvas {
+  position: absolute;
 }
 
 @media screen and (max-width: 640px) {
