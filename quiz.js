@@ -2,12 +2,13 @@ import {
   drawMap,
   clearMap,
   drawTotalRightAnswers,
-  changeCanvasHeight,
+  changeCanvasHeightForSmallDevide,
+  changeCanvasSizeForResize
 } from "./map.js";
 const time0 = performance.now();
-const changePageHeight = (max_width_for_device, deviceWidth) => {
+const changePageHeightandCanvasForSmallDevices = (max_width_for_device, deviceWidth) => {
   if (deviceWidth < max_width_for_device) {
-    changeCanvasHeight(0.94);
+    changeCanvasHeightForSmallDevide(0.94);
     const rootElelemt = document.querySelector(":root");
     rootElelemt.style.setProperty(
       "--page-height",
@@ -102,6 +103,7 @@ function StartQuiz(quizDataCopy) {
   doneButton.disabled = false;
   quizControlGoFurtherElement.disabled = true;
   const selectedCountry = randomCountrySelect(quizDataCopy);
+
   const form = document.querySelector("#quiz-form");
 
   if (selectedCountry != undefined) {
@@ -165,9 +167,22 @@ async function getQuizDataAndStartGame(url) {
 
   try {
     //DONT USE EVENT LISTENER ON BUTTONS. we shouldn’t use addEventListener too often since it keeps adding new event listeners to a DOM object without discarding the old ones.
-    changePageHeight(600, window.screen.availWidth);
+    changePageHeightandCanvasForSmallDevices(640, window.screen.availWidth);
 
     StartQuiz(dataCopy);
+
+    window.addEventListener('resize', (e)=> {
+      const selectedCountry = dataCopy.countries.filter((country) => {
+        return country.selected === true && !country.passed;
+      })[0];
+      changeCanvasSizeForResize(e);
+      drawMap(selectedCountry);
+      
+    });
+    doneButton.onclick = () => checkAnswers(dataCopy);
+    retryButton.onclick = () => getQuizDataAndStartGame("./quiz.json");
+    quizControlGoFurtherElement.onclick = () => StartQuiz(dataCopy);
+
     // doneButton.addEventListener("click", (e) => {
     //   e.stopPropagation();
     //   console.log("done click");
@@ -181,9 +196,7 @@ async function getQuizDataAndStartGame(url) {
     //   // getQuizDataAndStartGame("./quiz.json");
 
     // });
-    doneButton.onclick = () => checkAnswers(dataCopy);
-    retryButton.onclick = () => getQuizDataAndStartGame("./quiz.json");
-    quizControlGoFurtherElement.onclick = () => StartQuiz(dataCopy);
+
     // go.addEventListener("click", (e) => {
     //   e.stopPropagation();
 

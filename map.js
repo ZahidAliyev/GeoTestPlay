@@ -1,12 +1,15 @@
 // CAnvas
-
+const MAP_CONTAINER = document.querySelector(".Map");
 const canvas = document.querySelector("#map");
 
 const ctx = canvas.getContext("2d");
-const canvasContainerWidth = document.querySelector(".Map").offsetWidth;
-const canvasContainerHeight = document.querySelector(".Map").offsetHeight;
-canvas.width = canvasContainerWidth;
-canvas.height = canvasContainerHeight;
+let canvasContainerWidth = MAP_CONTAINER.offsetWidth;
+let canvasContainerHeight = MAP_CONTAINER.offsetHeight;
+canvas.width = MAP_CONTAINER.offsetWidth;
+canvas.height = MAP_CONTAINER.offsetHeight;
+
+let initialWindowInnerWidth = window.innerWidth;
+let initialWindowInnerHeight = window.innerHeight;
 
 export const drawMap = (country) => {
   const image = new Image();
@@ -20,24 +23,31 @@ export const drawMap = (country) => {
       image.height,
       0,
       0,
-      canvasContainerWidth,
-      canvasContainerHeight
+      canvas.width,
+      canvas.height
     );
   };
 };
 
 export const clearMap = () =>
-  ctx.clearRect(0, 0, canvasContainerWidth, canvasContainerHeight);
+  ctx.clearRect(0, 0, MAP_CONTAINER.offsetWidth, MAP_CONTAINER.offsetHeight);
 
 export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) => {
   ctx.font = "30px serif";
   ctx.fillText(
     `Total Righ Answers: ${allCountriesTotal} of ${testsQuantity}`,
-    canvasContainerWidth * 0.3,
-    canvasContainerHeight * 0.5,
-    canvasContainerWidth * 0.4,
+    MAP_CONTAINER.offsetWidth * 0.3,
+    MAP_CONTAINER.offsetHeight * 0.5,
+    MAP_CONTAINER.offsetWidth * 0.4
   );
 };
-export const changeCanvasHeight = (percentOfFullHeight) => {
-  canvas.height *= percentOfFullHeight;
-}
+export const changeCanvasHeightForSmallDevide = (percentOfFullHeight) =>
+  (canvas.height *= percentOfFullHeight);
+
+export const changeCanvasSizeForResize = (e) => {
+  canvas.width = MAP_CONTAINER.offsetWidth
+  canvas.height = MAP_CONTAINER.offsetHeight
+//  canvas.width = canvasContainerWidth - ((initialWindowInnerWidth - e.target.innerWidth)*0.58);
+//  canvas.height = canvasContainerHeight - ((initialWindowInnerHeight - e.target.innerHeight)*0.85);
+
+};
