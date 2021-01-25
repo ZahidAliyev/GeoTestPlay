@@ -164,30 +164,35 @@ function StartQuiz(quizDataCopy) {
     quizControlDoneAndRetryDivElement.appendChild(retryButton);
   }
 }
-
+const controlResizeCall = (data)=> {
+  const selectedCountry = data.countries.filter((country) => {
+    return country.selected === true && !country.passed;
+  })[0];
+  changeCanvasSizeForResize();
+  drawMap(selectedCountry);
+}
 async function getQuizDataAndStartGame(url) {
   //Fething data asynchroniously with asynch await
   const res = await fetch(url);
   //Converting it to json format
   const data = await res.json();
 
-  const dataCopy = Object.assign({}, data);
-
+  const dataCopy = JSON.parse(JSON.stringify(data));
   try {
     //DONT USE EVENT LISTENER ON BUTTONS. we shouldn’t use addEventListener too often since it keeps adding new event listeners to a DOM object without discarding the old ones.
     changePageHeightandCanvasForSmallDevices(640, window.screen.availWidth);
 
     StartQuiz(dataCopy);
 
-    window.addEventListener('resize', (e)=> {
-      const selectedCountry = dataCopy.countries.filter((country) => {
-        return country.selected === true && !country.passed;
-      })[0];
-      changeCanvasSizeForResize(e);
-      drawMap(selectedCountry);
+    window.addEventListener('resize', ()=> {
+      controlResizeCall(dataCopy);
       
     });
-    doneButton.onclick = () => checkAnswers(dataCopy);
+    doneButton.onclick = () => {
+      checkAnswers(dataCopy)
+      console.log(data, dataCopy);
+
+    };
     retryButton.onclick = () => getQuizDataAndStartGame("./quiz.json");
     quizControlGoFurtherElement.onclick = () => StartQuiz(dataCopy);
 

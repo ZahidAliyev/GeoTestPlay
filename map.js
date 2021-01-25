@@ -3,13 +3,12 @@ const MAP_CONTAINER = document.querySelector(".Map");
 const canvas = document.querySelector("#map");
 
 const ctx = canvas.getContext("2d");
-let canvasContainerWidth = MAP_CONTAINER.offsetWidth;
-let canvasContainerHeight = MAP_CONTAINER.offsetHeight;
+
 canvas.width = MAP_CONTAINER.offsetWidth;
 canvas.height = MAP_CONTAINER.offsetHeight;
 
-let initialWindowInnerWidth = window.innerWidth;
-let initialWindowInnerHeight = window.innerHeight;
+// let initialWindowInnerWidth = window.innerWidth;
+// let initialWindowInnerHeight = window.innerHeight;
 
 export const drawMap = (country) => {
   const image = new Image();
@@ -44,7 +43,7 @@ export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) => {
 export const changeCanvasHeightForSmallDevide = (percentOfFullHeight) =>
   (canvas.height *= percentOfFullHeight);
 
-export const changeCanvasSizeForResize = (e) => {
+export const changeCanvasSizeForResize = () => {
   canvas.width = MAP_CONTAINER.offsetWidth
   canvas.height = MAP_CONTAINER.offsetHeight
 //  canvas.width = canvasContainerWidth - ((initialWindowInnerWidth - e.target.innerWidth)*0.58);
