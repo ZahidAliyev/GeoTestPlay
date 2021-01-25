@@ -21,7 +21,7 @@ const createHtmlElement = (tag, id = 0, className = 0, text = 0) => {
   elementsName = document.createElement(tag);
   if (className) {
     elementsName.setAttribute("class", className);
-  } 
+  }
   if (id) {
     elementsName.setAttribute("id", id);
   }
@@ -59,8 +59,7 @@ const randomCountrySelect = (data) => {
 
 const changeElementsColor = (element, color) => {
   element.style.backgroundColor = color;
-
-}
+};
 // Done button function
 const checkAnswers = (data) => {
   const selectedCountry = data.countries.filter((country) => {
@@ -92,13 +91,11 @@ const checkAnswers = (data) => {
 /////////START or Continue Quiz with Copied Data
 // Here is a function that fetchs data from given url, makes html quiz code and inserts this data to it.
 function StartQuiz(quizDataCopy) {
-
-  if(retryButton !== undefined) {
+  if (retryButton !== undefined) {
     quizControlDoneAndRetryDivElement.innerHTML = "";
     quizControlDoneAndRetryDivElement.appendChild(doneButton);
   } else {
     quizControlDoneAndRetryDivElement.appendChild(doneButton);
-
   }
   doneButton.disabled = false;
   quizControlGoFurtherElement.disabled = true;
@@ -109,39 +106,50 @@ function StartQuiz(quizDataCopy) {
   if (selectedCountry != undefined) {
     drawMap(selectedCountry);
     QuizControlTotalElement.textContent = `Total: ${selectedCountry.total}`;
-
-    form.innerHTML = "";
+    if(form.firstChild !== null) {
+      form.removeChild(form.firstChild);
+    }
     // Looping trough array of tests for given country to make html and put quizDataCopy into html
+    const allTestsFragment = document.createDocumentFragment();
+    const QUIZ_TESTS_CONTAINER = createHtmlElement('div', null, 'Quiz-tests-tests_container', null);
     selectedCountry.tests.forEach((test, testIndex) => {
 
-      // adding test container for each test in country tests and text quizDataCopy as a question
-      form.innerHTML += `<div class="Quiz-tests_test">
-            <fieldset class="Quiz-tests_test-question">
-              <legend class="Quiz-tests_test-question-text">
-                <h3>${test.question_text}</h3>
-              </legend>
+      const QUIZ_TESTS_TEST_DIV_ELEMENT = createHtmlElement("div", null, 'Quiz-tests_test', null);
+      const FIELDSET_ElEMENT = createHtmlElement("fieldset", null, "Quiz-tests_test-question", null);
+      const LEGEND_ELEMENT = createHtmlElement("legend", null, "Quiz-tests_test-question-text", null);
+      const H3_ELEMENT = createHtmlElement("h3", null, null, test.question_text);
+      const TEST_INPUTS_ELEMENTS_CONTAINER = createHtmlElement("div", null, "Quiz-tests_test-answers", null);
+
+      for(let answerIndex = 0; answerIndex < test.answers.length; answerIndex++) {
+
+        const INPUT_DIV_ELEMENT = createHtmlElement('div', null, "Quiz-tests_test-answer", null);
+        const INPUT_ELEMENT = createHtmlElement('input', test.answers[answerIndex].answer_text, null, null);
   
-            </fieldset>
-            </div>
-            `;
-      // only after adding html test div with dieldset to form, selecting all fieldset elements
-      const fieldset = document.querySelectorAll(".Quiz-tests_test-question");
-      // creating div for adding all radio inputs in it
-      const options = createHtmlElement("div", null, "Quiz-tests_test-answers", null);
-      // looping through each answer in answers data from test to add radio inputs HTML to options and insert answer text in each
-      test.answers.forEach((answer) => {
-        options.innerHTML += `
-          <div class="Quiz-tests_test-answer">
+        INPUT_ELEMENT.setAttribute('type', 'radio');
+        INPUT_ELEMENT.setAttribute('name', test.name);
+        INPUT_ELEMENT.setAttribute('value', test.answers[answerIndex].value);
   
-            <input type="radio" name="${test.name}" id="${answer.answer_text}" value="${answer.value}"/>
-            <label for="${answer.answer_text}">${answer.answer_text}</label>
-          </div>
-          `;
-      });
-      // after adding all inputs to options container, we append options container to fieldset of each iterated test
-      fieldset[testIndex].appendChild(options);
+        const LABEL_ELEMENT = createHtmlElement('label', null, null, test.answers[answerIndex].answer_text);
+        LABEL_ELEMENT.setAttribute('for', test.answers[answerIndex].answer_text);
+        
+        LABEL_ELEMENT.textContent = test.answers[answerIndex].answer_text;
+        INPUT_DIV_ELEMENT.appendChild(INPUT_ELEMENT);
+        INPUT_DIV_ELEMENT.appendChild(LABEL_ELEMENT);
+
+        TEST_INPUTS_ELEMENTS_CONTAINER.appendChild(INPUT_DIV_ELEMENT);
+      }
+      LEGEND_ELEMENT.appendChild(H3_ELEMENT);
+      FIELDSET_ElEMENT.appendChild(LEGEND_ELEMENT);
+      FIELDSET_ElEMENT.appendChild(TEST_INPUTS_ELEMENTS_CONTAINER);
+      QUIZ_TESTS_TEST_DIV_ELEMENT.appendChild(FIELDSET_ElEMENT);
+      allTestsFragment.appendChild(QUIZ_TESTS_TEST_DIV_ELEMENT);
+
     });
+    QUIZ_TESTS_CONTAINER.appendChild(allTestsFragment);
+    
+    form.appendChild(QUIZ_TESTS_CONTAINER);
     //If TEST FINISHED
+
   } else {
     form.innerHTML = `<div class="quiz-test-finished"><h2>Test finished</h2></div>`;
     clearMap();
