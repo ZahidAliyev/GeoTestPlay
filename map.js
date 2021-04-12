@@ -8,7 +8,6 @@ canvas.width = MAP_CONTAINER.offsetWidth;
 canvas.height = MAP_CONTAINER.offsetHeight;
 
 
-
 export const drawMap = (country) => {
   const image = new Image();
   image.src = `${country.image}`;
@@ -42,7 +41,7 @@ export const drawTotalRightAnswers = (testsQuantity, allCountriesTotal) => {
 export const changeCanvasHeightForSmallDevide = (percentOfFullHeight) =>
   (canvas.height *= percentOfFullHeight);
 
-export const changeCanvasSizeForResize = (e) => {
+export const changeCanvasSizeForResize = () => {
   canvas.width = MAP_CONTAINER.offsetWidth
   canvas.height = MAP_CONTAINER.offsetHeight
 
