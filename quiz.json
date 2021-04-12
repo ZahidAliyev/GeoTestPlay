@@ -1047,7 +1047,7 @@
             },
             {
               "answer_text": "Istanbul",
-              "isitright": true,
+              "isitright": false,
               "checked": "",
               "value": "Istanbul",
               "id": "3"
@@ -1055,7 +1055,7 @@
 
             {
               "answer_text": "Ankara",
-              "isitright": false,
+              "isitright": true,
               "checked": "",
               "value": "Ankara",
               "id": "4"

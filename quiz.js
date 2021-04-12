@@ -5,7 +5,6 @@ import {
   changeCanvasHeightForSmallDevide,
   changeCanvasSizeForResize
 } from "./map.js";
-const time0 = performance.now();
 const changePageHeightandCanvasForSmallDevices = (max_width_for_device, deviceWidth) => {
   if (deviceWidth < max_width_for_device) {
     changeCanvasHeightForSmallDevide(0.94);
@@ -183,30 +182,9 @@ async function getQuizDataAndStartGame(url) {
     retryButton.onclick = () => getQuizDataAndStartGame("./quiz.json");
     quizControlGoFurtherElement.onclick = () => StartQuiz(dataCopy);
 
-    // doneButton.addEventListener("click", (e) => {
-    //   e.stopPropagation();
-    //   console.log("done click");
 
-    //   console.log(dataCopy);
-    //   done(dataCopy);
-    // });
-    // retryButton.addEventListener("click", (e) => {
-    //   e.stopPropagation();
-    //   console.log("retry click");
-    //   // getQuizDataAndStartGame("./quiz.json");
-
-    // });
-
-    // go.addEventListener("click", (e) => {
-    //   e.stopPropagation();
-
-    //   StartQuiz(dataCopy);
-    //   console.log("go click");
-    // });
   } catch (err) {
     console.log("err", err);
   }
 }
-const time1 = performance.now();
-console.log(time0, time1);
 getQuizDataAndStartGame("./quiz.json");
