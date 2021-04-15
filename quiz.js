@@ -5,7 +5,8 @@ import {
   changeCanvasHeightForSmallDevide,
   changeCanvasSizeForResize
 } from "./map.js";
-const time0 = performance.now();
+
+var time0 = performance.now();
 const changePageHeightandCanvasForSmallDevices = (max_width_for_device, deviceWidth) => {
   if (deviceWidth < max_width_for_device) {
     changeCanvasHeightForSmallDevide(0.94);
