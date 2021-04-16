@@ -7,8 +7,6 @@ const ctx = canvas.getContext("2d");
 canvas.width = MAP_CONTAINER.offsetWidth;
 canvas.height = MAP_CONTAINER.offsetHeight;
 
-// let initialWindowInnerWidth = window.innerWidth;
-// let initialWindowInnerHeight = window.innerHeight;
 
 export const drawMap = (country) => {
   const image = new Image();
@@ -46,7 +44,6 @@ export const changeCanvasHeightForSmallDevide = (percentOfFullHeight) =>
 export const changeCanvasSizeForResize = () => {
   canvas.width = MAP_CONTAINER.offsetWidth
   canvas.height = MAP_CONTAINER.offsetHeight
-//  canvas.width = canvasContainerWidth - ((initialWindowInnerWidth - e.target.innerWidth)*0.58);
-//  canvas.height = canvasContainerHeight - ((initialWindowInnerHeight - e.target.innerHeight)*0.85);
+
 
 };
