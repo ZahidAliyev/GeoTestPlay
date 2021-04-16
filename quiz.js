@@ -5,41 +5,39 @@ import {
   changeCanvasHeightForSmallDevide,
   changeCanvasSizeForResize
 } from "./map.js";
-const changePageHeightandCanvasForSmallDevices = (max_width_for_device, deviceWidth) => {
-  if (deviceWidth < max_width_for_device) {
-    changeCanvasHeightForSmallDevide(0.94);
-    const rootElelemt = document.querySelector(":root");
-    rootElelemt.style.setProperty(
-      "--page-height",
-      `${window.innerHeight / 100}px`
-    );
-  }
-};
-const createHtmlElement = (tag, id = 0, className = 0, text = 0) => {
-  let elementsName = createHtmlElement.name;
-  elementsName = document.createElement(tag);
-  if (className) {
-    elementsName.setAttribute("class", className);
-  }
-  if (id) {
-    elementsName.setAttribute("id", id);
-  }
-  elementsName.textContent = text;
-  return elementsName;
-};
 const quizControlDoneAndRetryDivElement = document.querySelector(
   ".Quiz-control-done"
 );
-const doneButton = createHtmlElement("button", null, "button", "Done");
-
-const retryButton = createHtmlElement("button", null, "button", "Retry");
-
 const QuizControlTotalElement = document.querySelector(
   ".Quiz-control-total > h2"
 );
 const quizControlGoFurtherElement = document.querySelector(
   ".Quiz-control-go > button"
 );
+
+const changePageHeightandCanvasForSmallDevices = (max_width_for_device, deviceWidth) => {
+  if (deviceWidth < max_width_for_device) {
+    const rootElelemt = document.querySelector(":root");
+    rootElelemt.style.setProperty(
+      "--page-height",
+      `${window.innerHeight / 100}px`
+    );
+    changeCanvasHeightForSmallDevide(0.94);
+
+  }
+};
+const createHtmlElement = (tag, id = null, className = null, text = null) => {
+  let elementsName;
+  elementsName = document.createElement(tag);
+  elementsName.setAttribute("class", className);
+  elementsName.setAttribute("id", id);
+  elementsName.textContent = text;
+  return elementsName;
+};
+
+const doneButton = createHtmlElement("button", null, "button", "Done");
+const retryButton = createHtmlElement("button", null, "button", "Retry");
+
 const randomCountrySelect = (data) => {
   const notSelectedCountriesYet = data.countries.filter((country) => {
     return country.selected === false;
