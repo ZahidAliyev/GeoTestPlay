@@ -62,6 +62,7 @@ const checkAnswers = (data) => {
   const selectedCountry = data.countries.filter((country) => {
     return country.selected === true && !country.passed;
   })[0];
+  console.log(selectedCountry)
   const TEST_ELEMENT = document.querySelectorAll(".Quiz-tests_test");
   selectedCountry.tests.forEach((test, testindex) => {
     data.totalTestsQuantity += 1;
@@ -71,14 +72,10 @@ const checkAnswers = (data) => {
         test.mark = true;
         selectedCountry.total += 1;
         data.totalRightAnswers += 1;
-        changeElementsColor(TEST_ELEMENT[testindex], "#05f240");
         return false;
-      } else {
-        changeElementsColor(TEST_ELEMENT[testindex], "#f70330");
-
-        return true;
-      }
+      } else return true;
     });
+    test.mark ? changeElementsColor(TEST_ELEMENT[testindex], "#05f240") : changeElementsColor(TEST_ELEMENT[testindex], "#f70330");
   });
   selectedCountry.passed = true;
   quizControlGoFurtherElement.disabled = false;
@@ -186,6 +183,7 @@ async function getQuizDataAndStartGame(url) {
       
     });
     doneButton.onclick = () => {
+      console.log(data, dataCopy)
       checkAnswers(dataCopy)
       console.log(data, dataCopy);
 
